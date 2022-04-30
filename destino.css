@@ -1,0 +1,194 @@
+@import "toastify-js/src/toastify.css";
+* {
+  margin:0;
+  padding:0;
+  font-family: "Nunito", sans-serif;
+  box-sizing: border-box; 
+}
+
+header .navbar {
+  width: 100%;
+  padding:0;
+  margin:0;
+  background-image: linear-gradient(90deg, #439b85 70%, white); }
+
+  
+.titulo-ppal{
+  font-family: 'Playball', cursive;
+  font-size: 4rem;
+  color: #d8b787; }
+
+.descripcion {
+  color: rgba(151, 110, 49, 0.822);
+  font-size: 1.2rem; }
+
+.comensales {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5accaf; }
+  select{
+    background-color:rgba(250, 239, 223, 0.918);
+    color: rgba(85, 62, 27, 0.726);
+    font-weight: bold;
+  }
+select option{
+  font-size:1.1rem;
+  background-color: #64b19ef3;
+  color:rgb(248, 243, 234);
+  text-align: center;
+}
+select:hover{
+  background-color: rgba(85, 62, 27, 0.726);
+  color: rgb(248, 243, 234);
+}
+.descriptivo {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1b8f72;
+  margin: 2rem 0;
+  }
+.descriptivo span{
+  font-size: 1.2rem;
+}
+.ingredientesSeleccionar, .cantidadesReceta, .productosCarrito {
+display:flex;
+flex-wrap: wrap;
+}
+
+.card-seleccionar, .card-body-receta, .card-carrito {
+  width:15rem;
+  border: 0.15rem solid #5accaf;
+  border-radius: 5px;
+  display: inline-block;
+  box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0.5rem; }
+  .card-seleccionar label, .card-body-receta label, .card-carrito label {
+    font-size: 1.3rem; }
+  .card-seleccionar .card-img-top, .card-body-receta .card-img-top, .card-carrito .card-img-top {
+    height: 5rem;
+    width: 5rem;
+    margin-bottom: 10px; }
+
+.toastCheckbox{
+  background-color: rgba(116, 86, 45, 0.849);
+  color:white;
+  font-size:1.1rem;
+}
+
+.pasos, .sectionNosotros .tituloNosotros {
+  color: rgba(151, 110, 49, 0.822);
+  font-size: 2rem;
+  font-family: "Playball", serif;
+  text-align: center; 
+  margin: 1rem auto;}
+
+.card-body-receta {
+  border-color: #d8b787; }
+  .card-body-receta h4 {
+    font-size: 1.2rem; }
+
+.card-carrito {
+  border-color: #1b8f72;
+  justify-items: space-evenly; }
+  .card-carrito h4 {
+    font-size: 1.2rem; }
+  .card-carrito h3 {
+    font-size: 1.5rem; }
+  .card-carrito  .btn-outline-secondary{
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+  }
+
+
+
+.btnComprar {
+  background-color: #439e87;
+  font-family: "Playball", serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: white;
+  border-color: wheat;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 20px auto; }
+
+  .productoEnCarrito{
+    font-size: 1.5rem;
+    color: rgba(116, 87, 45, 0.822);
+    display: inline-block;
+    text-align:left;
+    padding: 1rem;
+    margin: 1rem 0; 
+  }
+  .productoEnCarrito h3{
+  font-size: 2rem;
+  font-weight: bold;
+  }
+  .listaCarrito{
+    border: 0.15rem solid wheat;
+  border-radius: 5px;
+  box-shadow: 2px 6px 3px 3px rgb(133, 115, 83);
+  }
+  .precioTotal{
+  color: #1b8f72;
+  font-family: "Playball", serif;
+  font-size: 3rem;
+  text-align: center;
+  border-color: wheat;
+  border-radius: 5px;
+  margin: 20px; 
+  }
+
+.sectionNosotros .tituloNosotros {
+  margin: 150px 0 50px 0;
+  text-align: center;
+  font-size: 3rem; }
+
+.sectionNosotros p {
+  margin-bottom: 150px; }
+
+footer {
+  background-color: #faeedc;
+  line-height: 6vh;
+  padding-top: 3vh; }
+  footer .redesFooter {
+    margin-bottom: 3vh; }
+    footer .redesFooter a {
+      margin: 0 1rem; }
+  footer ul li {
+    color: #1b8f72;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 2vw;
+    text-align: center;
+    list-style-type: none;
+    text-decoration: none;
+    margin-bottom: 3vh; }
+    footer ul li iframe {
+      width: 30vh;
+      height: 20vh;
+      border-radius: 0.8vh; }
+    footer ul li #subir {
+      position: relative;
+      font-weight: normal;
+      color: white;
+      text-decoration: none;
+      background-color: rgba(151, 110, 49, 0.822);
+      border-width: 1vh 1vh 0.5vh 0.5vh;
+      border-style: double;
+      border-color: wheat;
+      border-radius: 0.5vh;
+      padding: 1.5vh;
+      transition: padding 300ms, border-radius 300ms; }
+      footer ul li #subir:hover {
+        border-radius: 1.2vh;
+        padding: 2vh; }
+  footer ul .copyright {
+    width: 100%;
+    font-weight: normal;
+    background-color: white;
+    color: rgba(151, 110, 49, 0.822);
+    text-align: center; }
