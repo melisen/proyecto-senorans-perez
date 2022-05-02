@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="shortcut icon" href="" />           <!--Completar-->
+    <link rel="shortcut icon" href="images/oryza-logo.png" />           <!--Completar-->
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Oryza Tienda sin Tacc - Crea tu pizza</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,9 @@
     <header class="container-fluid" id="header">
           <nav class="navbar navbar-expand navbar-dark" >
               <div class="container-fluid">
-                <a class="navbar-brand" href="#">Oryza Tienda sin TACC</a>
+                <a class="navbar-brand" href="#">
+                  <img src="images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
+                  Oryza Tienda sin TACC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -82,33 +84,58 @@
             <div class="col-10"> 
               <h4 class="descriptivo">¿Terminaste de agregar los ingredientes para tu pizza?</h4>
               <button id="yaTermine"  class="btnComprar" >Sí, ya terminé</button>
-            </div> 
-            <div class="spinner-border text-light" role="status" id="spinner">
-              <span class="sr-only">Cargando</span>
             </div>
+            <div class="text-center" id="spinner">
+              <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status" >
+              <span class="visually-hidden"></span>
+            </div>
+              Cargando
+            </div>
+            
           <div class="row text-center justify-content-center procedimientoReceta">
             <div class="col-10">
-                <h3 class="pasos">Cantidades necesarias:</h3>
-                <div class=" col-12 cantidadesReceta"></div>
+                <h3 class="pasos" id="cantidadesNecesarias"></h3>
+                <div class=" col-auto cantidadesReceta"></div>
             </div>
-            <div class="col-10">
+            <div class="col-10 contenedor-receta">
               <h3 class="pasos" id="pasos">Paso a paso para realizar la pizza en casa:</h3>
               <p class="descripcion">Mezclar premezcla con la sal, formar una corona. En el medio volcar el agua tibia y el aceite de oliva. Amasar unos minutos hasta obtener una masa lisa y firme. Dejar reposar 30 minutos. Aceitar las pizzeras. Dividir la masa en la cantidad de bollos necesarios para formar las pizzas. Estirar cada bollo sobre una pizzera. Dejar levar 2 hs. Anticipadamente prender horno fuerte (220°C) y hornear las pizzas 10 minutos aproximadamente (dependiento del horno hasta formar una prepizza). Desmoldar sobre rejilla metálica o tabla de madera. Dejar enfriar. En este punto se puede enfilmar y congelar. En el momento en que se desee servir la pizza, recalentar en horno moderado y agregar los ingredientes escogidos para la cubierta, devolver al horno hasta calentar la pizza completa. Desmoldar la pizza caliente en una tabla de madera, cortar y servir.</p>
             </div> 
           </div>       
         <div class="row text-center justify-content-center">
             <div class="col-10">
-              <h2 class="descriptivo" id="carrito">Hemos agregado los artículos necesarios a tu carrito: <br>
-                                                <span>Puedes agregar o quitar los que necesites</span></h2>
+              <h2 class="descriptivo" id="carrito"></h2>
             </div>
             <div class="col-10 productosCarrito"></div>
-            <div class="col-10"><button id="btnconfirmarCompra" class="col-auto btnComprar">Confirmar compra</button></div>
-            <div class="col-10" id="listaCarrito"></div>
+            <div class="col-10">
+              <button id="btnConfirmarCompra" class="col-auto btnComprar" >Confirmar compra</button>
+            </div>
+            <div class="col-10" >
+              <table class="table table-responsive" id="tabla">
+                <thead>
+                    <tr>
+                        <th>Artículo</th>
+                        <th>Marca</th>
+                        <th>Contenido</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="contenedorCarrito">
+                </tbody>
+              </table>
+
+            </div>
+            <div class="col-10" id="precioTotal">
+            </div>
+            <div class="col-10">
+              <button id="btnRealizarPedido" class="col-auto btnComprar" >Realizar Pedido</button>
+            </div>
+
             
         </div>
-        <div class="row justify-content-center">
-            <div class="col-10"><h2 id="precioTotal" class="precioTotal" ></h2></div>
-            <div class="col-10 divPasosDeSuCompra descriptivo"></div>
+
+        <div class="row justify-content-center">         
             <div class="col-9 sectionNosotros">
                 <h2 class="tituloNosotros" id="nosotros">Nosotros</h2>
                 <p class="descripcion">Somos unas tienda dedicada a promover la felicidad de cocinar en casa con productos libres de gluten! Facilitamos opciones interactivas para que te diviertas armando tu receta de forma dinámica y puedas comprar lo necesario para la cantidad de personas en la familia o amigos que queramos invitar. Al realizar la compra coordinaremos el envío de todos los ingredientes a tu hogar.</p>

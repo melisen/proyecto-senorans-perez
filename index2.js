@@ -81,10 +81,12 @@ const ingredientesSeleccionar = document.querySelector(".ingredientesSeleccionar
 const comensales = document.querySelector("#comensales");
 const cantidadesReceta = document.querySelector(".cantidadesReceta");
 const productosCarrito = document.querySelector(".productosCarrito");
-const btnComprar = document.querySelector("#btnconfirmarCompra");
-const contenedorCarrito = document.getElementById('listaCarrito');
+const btnConfirmarCompra = document.querySelector("#btnConfirmarCompra");
+const contenedorCarrito = document.getElementById('contenedorCarrito');
+const tituloPrecioTotal = document.getElementById('tituloPrecioTotal');
 const precioTotal = document.getElementById('precioTotal');
-const divPasosDeSuCompra = document.querySelector(".divPasosDeSuCompra");
+const tabla = document.getElementById('tabla');
+
 
 
 
@@ -98,11 +100,12 @@ comensales.value = 0;
 comensales.addEventListener("change",() =>{
     cantidadPizzas = comensales.value;
     Toastify({
+        avatar: "images/oryza-logo.png",
         text: "Seleccionaste la cantidad de comensales, ¡Genial!",
         gravity: "top",
         position: "right",
         style:{
-            background: "rgba(151, 110, 49, 0.822)"
+            background: "rgba(65, 44, 16, 0.897)"
         }
     }).showToast();      
     
@@ -134,11 +137,12 @@ function quePasaCuandoCheck(){
         elegido.addEventListener('click',()=>{ 
             elegido.value!==null && agregarAPizzaCreada(e.id);
             Toastify({
+                avatar: "images/oryza-logo.png",
                 text: "¡Agregaste un nuevo ingrediente!",
                 gravity: "bottom",
                 position: "right",
                 style:{
-                    background: "rgba(116, 86, 45, 0.849)"
+                    background: "rgba(65, 44, 16, 0.897)"
                 }
             }).showToast();       
         })
@@ -151,13 +155,13 @@ function agregarAPizzaCreada(id){
 }
 
 
-
 //Confirmación de que dejó de seleccionar ingredientes. Validación: que haya seleccionado la cantidad de comensales, de lo contrario sale un sweetalert.
 //Desencadena 2 procesos en paralelo: mostrar las cantidades para la receta, y mostrar los productos agregados automáticamente al carrito (por haberse pusheado a pizzaCreada)
+document.querySelector("#spinner").style.display = "none";
 function confirmacionSelecIngred(){
     document.querySelector('#yaTermine').addEventListener("click", () =>{
         //comensales.value==0 ? alertComensales()  : (mostrarCantidadesReceta(pizzaCreada), mostrarProductos(pizzaCreada));
-        
+        document.querySelector("#spinner").style.display = "inline-block";
         const promesa = new Promise ((resolve, reject) => {
             if(comensales.value==0){
                 setTimeout(() => {
@@ -178,9 +182,13 @@ function confirmacionSelecIngred(){
         .catch(() => {
             mostrarCantidadesReceta(pizzaCreada);
             mostrarProductos(pizzaCreada);
+            
+           
         })
         .finally(() => {
             document.querySelector("#spinner").style.display = "none";
+            document.querySelector("#cantidadesNecesarias").innerHTML = `Cantidades necesarias:`;
+            document.querySelector("#carrito").innerHTML = ` Hemos agregado los artículos necesarios a tu carrito: <br><span>Puedes agregar o quitar los que necesites</span>`;
         });
     
     })
@@ -205,6 +213,7 @@ function alertComensales(){
 //Calcular cantidades de la receta con el método, dentro de cada card de ingrediente:
 function mostrarCantidadesReceta (arrayReceta){
     arrayReceta.innerHTML = "";
+    
     arrayReceta.forEach(ingred => {
     const cajaCantidadesReceta = document.createElement("div");
     cajaCantidadesReceta.className ="cajaCantidadesReceta";
@@ -222,6 +231,7 @@ function mostrarCantidadesReceta (arrayReceta){
 
 //Mostrar cards en la sección de productos carrito, cada card contiene datos del ingrediente, cantidad de unidades de compra necesarias, su precio unitario y el subtotal
 function mostrarProductos(arrayProductos){
+    arrayProductos = arrayProductos.filter(item => item.id !== 15);
     productosCarrito.innerHTML="";
     arrayProductos.forEach(producto =>{
         //Declaración de propiedad cantidad:
@@ -293,7 +303,9 @@ function mostrarProductos(arrayProductos){
 
 //Confirmación de compra: muestra lista final de productos y precio total.
 function comprar(){
-    btnComprar.addEventListener("click", () =>{
+    btnConfirmarCompra.style.display="flex"
+    btnConfirmarCompra.addEventListener("click", () =>{
+        
         mostrarCarritoFinal();
         pasosDeSuCompra();
     })
@@ -301,33 +313,37 @@ function comprar(){
 
 function mostrarCarritoFinal() {
     contenedorCarrito.innerHTML = "";
+
+    tabla.style.display = "table";
+ 
+
+    pizzaCreada.splice(1,1);
+    
+
     pizzaCreada.forEach(el => {
-        const divFinal = document.createElement('div');
-        divFinal.className = 'productoEnCarrito';
-        divFinal.innerHTML=`
-                        <h3>${el.nombreIngred}</h3> 
-                        <h4>${el.GramosEnBolsa}  g</h4> 
-                        <h4>Precio unitario: $${el.precioXBolsa}</h4> 
-                        <h4>Cantidad:${el.cantidad}</h4>`;                        
-        contenedorCarrito.appendChild(divFinal);
+        const productoEnCarrito = document.createElement('tr');
+        productoEnCarrito.className = 'productoEnCarrito';
+        productoEnCarrito.innerHTML=`
+        <td>${el.nombreIngred.toUpperCase()}</td>
+        <td>${el.marca}</td>
+        <td>${el.GramosEnBolsa}  g</td>
+        <td>$${el.precioXBolsa} </td>
+        <td>${el.cantidad}</td> `;                        
+        contenedorCarrito.appendChild(productoEnCarrito);
     })
+    
     calcularTotal();
-    pasosDeSuCompra();
+    
 }
 
 ////Calcular total:
 const calcularTotal = () =>{
     // método reduce() para hacer una sumatoria, devuelve el resutado que lo guardamos en una variable total. El último parámetro, que está en 0, es desde dónde va a empezar a sumar
     let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
-    precioTotal.innerText =`Total:  $ ${total}`;
+    precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
+    
+     
 }
-
-function pasosDeSuCompra(){
-    divPasosDeSuCompra.innerHTML = 
-    `<h5 class="card-text">Ingrese para conocer los medios de pago y datos para su envío:</h5>
-    <button type="button" class="btnComprar">Medios de pago</button>`;
-}
-
 
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('pizza'))
