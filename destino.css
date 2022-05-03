@@ -162,10 +162,36 @@ flex-wrap: wrap;
 .sectionNosotros p {
   margin-bottom: 150px; }
 
+/************* página comprar.html *******/
+#formEnvio{
+  margin:3rem 0;
+}
+#datosDeEnvio{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+}
+.imgForm{
+  height:5rem;
+}
+.itemForm{
+margin:1rem 0;
+}
+.metodosPago{
+  margin:4rem 0;
+}
+.itemsPago{
+  display:flex;
+  justify-content: space-between;
+}
+#politica a:hover{
+color:rgb(11, 212, 179);
+}
+/*************** Footer *******/
 footer {
-  background-color: #faeedc;
+  background-color: #fcdaaf;
   line-height: 6vh;
-  padding-top: 3vh; }
+  padding-top: 2rem; }
   footer .redesFooter {
     margin-bottom: 3vh; }
     footer .redesFooter a {
@@ -180,8 +206,8 @@ footer {
     text-decoration: none;
     margin-bottom: 3vh; }
     footer ul li iframe {
-      width: 30vh;
-      height: 20vh;
+      width: 10rem;
+      height: 10rem;
       border-radius: 0.8vh; }
     footer ul li #subir {
       position: relative;
@@ -192,7 +218,7 @@ footer {
       border-width: 1vh 1vh 0.5vh 0.5vh;
       border-style: double;
       border-color: wheat;
-      border-radius: 0.5vh;
+      border-radius: 10px;
       padding: 1.5vh;
       transition: padding 300ms, border-radius 300ms; }
       footer ul li #subir:hover {

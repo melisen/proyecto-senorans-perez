@@ -99,6 +99,7 @@ let cantidadPizzas;
 comensales.value = 0;
 comensales.addEventListener("change",() =>{
     cantidadPizzas = comensales.value;
+    //Es relevante llamar la atención al usuario sobre la importancia de completar este paso para poder seguir con el resto del proceso (brindar el dato para poder calcular cantidades). Se una un toast ya que no es necesario interrumpir el flujo de acciones del usuario (como sería por ejemplo con un alert).
     Toastify({
         avatar: "images/oryza-logo.png",
         text: "Seleccionaste la cantidad de comensales, ¡Genial!",
@@ -136,6 +137,7 @@ function quePasaCuandoCheck(){
         const elegido = document.getElementById(`checkbox${e.id}`);
         elegido.addEventListener('click',()=>{ 
             elegido.value!==null && agregarAPizzaCreada(e.id);
+            //Se inserta un toast para enfatizar que la acción de agregar un ingrediente por parte del usuario es importante para el proceso general de armar la pizza.
             Toastify({
                 avatar: "images/oryza-logo.png",
                 text: "¡Agregaste un nuevo ingrediente!",
@@ -195,6 +197,7 @@ function confirmacionSelecIngred(){
 }
 
 function alertComensales(){
+    //Utilizo la librería Sweet Alert ya que un alert resulta conveniente en este proceso porque se necesita llamar la atención sal usuario sobre la necesidad de realizar una acción previa (seleccionar número de comensales) a la de confirmar la selección de ingredientes, y se le solicita que la cumpla.
     swal.fire({
         //icon:"info",
         title: "Te faltó decirnos para cuántos cocinarás",
