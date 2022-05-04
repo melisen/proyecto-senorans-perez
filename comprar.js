@@ -18,7 +18,7 @@ const transferencia = document.getElementById("transferencia");
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");*/
 
-/*
+/////////Prueba de guardar un solo input:
 const nombre = document.getElementById("nombre");
 let nombreUsuario;
 function guardarDatos(){
@@ -27,7 +27,7 @@ console.log(nombreUsuario)
 localStorage.setItem("nombreLS", JSON.stringify(nombreUsuario));
 }
 guardarDatos();
-*/
+
 //////////////////Ejemplo de clase:
 function guardarLocal(clave, valor){
     localStorage.setItem(clave, valor);
@@ -80,9 +80,9 @@ let calcularEnvio = () =>{
 let totalCompra;
 function mostrarResumenCompra(){
 
-    //RECUPERAR LOCAL STORAGE:
-const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
-let subtotal = JSON.parse(localStorage.getItem('total'));
+        //RECUPERAR LOCAL STORAGE:
+    const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
+    let subtotal = JSON.parse(localStorage.getItem('total'));
 
 
     pizzaCreadaFinal.forEach(el => {
@@ -95,6 +95,8 @@ let subtotal = JSON.parse(localStorage.getItem('total'));
         <td>$${el.precioXBolsa} </td>
         <td>${el.cantidad}</td> `;                        
         contenedorResumen.appendChild(productoEnResumen);
+
+        //Rellenar el modal con lo de abajo , crear los elementos en este función en vez de solo rellenarlos
     })
 
     contSubtotal.innerText=`Subtotal: $${subtotal}`

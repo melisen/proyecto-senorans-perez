@@ -344,7 +344,7 @@ function mostrarCarritoFinal() {
         <td>${el.cantidad}</td> `;                        
         contenedorCarrito.appendChild(productoEnCarrito);
     })
-    localStorage.setItem("pizzaCreadaFinal", JSON.stringify(pizzaCreada))
+    localStorage.setItem("pizzaCreadaFinal", JSON.stringify(pizzaCreada));
 
     calcularTotal();
     document.querySelector("#btnRealizarPedido").style.display = "block";
