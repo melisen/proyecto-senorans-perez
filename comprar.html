@@ -11,9 +11,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="shortcut icon" href="images/oryza-logo.png" />           <!--Completar-->
+    <link rel="shortcut icon" href="images/oryza-logo.png" />           
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Oryza Tienda sin Tacc - Crea tu pizza</title>
+    <title>Oryza Tienda sin Tacc</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Playball&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
                         <div class="itemForm col-5">
                         
                             <label for="Nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre" >
+                            <input type="text" class="form-control" placeholder="Nombre" id="nombre">
                         </div>
                         <div class="itemForm col-5">
                             <label for="Apellido" class="form-label">Apellido</label>
@@ -104,7 +104,7 @@
 
                         <div class="col-10 itemsPago">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="debito">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjeta" value="tarjeta">
                                 <label class="form-check-label" for="inlineRadio1">
                                   Tarjeta de débito o crédito
                                 </label>
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferencia" checked>
+                              <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="transferencia">
                               <label class="form-check-label" for="flexRadioDefault2">
                                Transferencia (25% off)
                               </label>
@@ -122,7 +122,7 @@
                               </div>
                             </div>
                               <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="pagoFacil" checked>
+                                    <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="pagoFacil">
                                     <label class="form-check-label" for="flexRadioDefault4">
                                      Pago Fácil
                                     </label>
@@ -131,7 +131,7 @@
                                     </div>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="rapipago">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="rapipago">
                                 <label class="form-check-label" for="inlineRadio2">
                                   Rapipago
                                 </label>
@@ -143,6 +143,25 @@
                                
                         </div>
                     </div>
+
+                    <div class="col-11 metodosPago" id="metodosDeEnvio">
+                      <legend>Método de envío:</legend>
+                      <div class="col-10 itemsPago">
+                          <div class="form-check ">
+                              <input class="form-check-input seleccionMetodosEnvio" type="radio" name="inlineRadioOptions" id="retirar" value="Retiro en local">
+                              <label class="form-check-label" for="inlineRadio1">
+                                Retirar gratis en nuestro local de la calle Timbúes.
+                              </label>
+                          </div>
+                          <div class="form-check ">
+                            <input class="form-check-input seleccionMetodosEnvio" type="radio" name="flexRadioDefault" id="envioDomicilio" value="Envío a domicilio" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                             Envío a domicilio GRATIS dentro del partido de Morón. Otras localidades: costo $450.
+                            </label>
+                          </div>                          
+                      </div>
+                  </div>
+
                     <div class="itemsPago">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="direccionFacturacion" checked>
@@ -153,11 +172,45 @@
                     </div>
                     <div id="politica" class="form-text">Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a  >política de privacidad</a>.
                     </div>
-                    <div class="text-center"><button id="btnRealizarPedido" class="col-auto btnComprar" >Realizar Pedido</button></div>
                 </fieldset>
             </form>
         </div>
     </div>
+
+ <!-- MODAL-->
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Resumen del pedido</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Contenido</th>
+              <th scope="col">Precio u.</th>
+              <th scope="col">Cantidad</th>
+            </tr>
+          </thead>
+          <tbody id="contenedorResumen">
+            <!-- completa la funcion mostrarResumenCompra-->
+          </tbody>
+          <div>
+            <tr class="table-active">
+              <th scope="col" id="contSubtotal"></th>
+            </tr>
+            <tr class="table-active">
+              <th scope="col" id="contTipoEnvio"></th>
+            </tr>
+            <tr class="table-active">
+              <th scope="col" id="contCostoEnvio"></th>
+            </tr>
+            <tr class="table-active">
+              <th scope="col" id="contTotalPedido"></th>
+            </tr>
+              
+            </tr>
+          </div>
+        </table>
+        <!--BOTON REALIZAR PEDIDO, FIN DEL MODAL-->
+ 
+
 </div>
 
 
@@ -201,6 +254,7 @@
           </div>
         </div>
     </footer>
+
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script
@@ -208,6 +262,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"
       ></script>
+      <script src="comprar.js"></script>
       <script src="index2.js"></script>
   </body>
   </html>

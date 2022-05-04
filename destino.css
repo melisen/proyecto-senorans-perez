@@ -151,12 +151,17 @@ flex-wrap: wrap;
 }
 
 #tituloPT{
-  font-family: "Lato", sans-serif;
+  font-family: "Playball", serif;
   background-color: white;
   color: rgb(11, 133, 133);
   font-size: 2.2rem;
   margin:5px auto;
 }
+
+#btnRealizarPedido{
+display:none;
+}
+
 .sectionNosotros .tituloNosotros {
   margin: 150px 0 50px 0;
   text-align: center;

@@ -3,7 +3,6 @@ Aclaración: el "factor de corrección" tiene en cuenta el desperdicio para calc
 //Cada objeto creado con la clase Ingrediente contempla como propiedad el peso neto para 1 pizza individual.
 //Variables globales:
 
-let container = document.querySelector(".container");
 
 class Ingrediente{
     constructor(id, nombreIngred, marca, pesoNeto1Pizza, factorCorreccion,GramosEnBolsa, precioXBolsa, foto, cantidad){
@@ -88,17 +87,24 @@ const precioTotal = document.getElementById('precioTotal');
 const tabla = document.getElementById('tabla');
 
 
-
-
-
 /////Se concaneta la receta de masa de pizza con la cubierta creada por el usuario:
 const pizzaCreada = [premezcla, agua, sal, aceiteOliva];
+/*Qué guardo en local Storage: CLAVES:
+cantidad de comensales/pizzas --> 'cantidadPizzas'
+ingrediente checkeado --> "ingredElegidoID"
+cada vez que se agrega o quita un objeto del array pizzaCreada (que funciona como carrito) --> "pizza"
+la lista de cantidades de la receta para cocinar --> "listaCantidadesReceta"
+
+*/
+
+
+//App:
 
 //Selecciono cantidad de comensales desde un select:
 let cantidadPizzas;
-comensales.value = 0;
 comensales.addEventListener("change",() =>{
     cantidadPizzas = comensales.value;
+    localStorage.setItem('cantidadPizzas', JSON.stringify(cantidadPizzas));
     //Es relevante llamar la atención al usuario sobre la importancia de completar este paso para poder seguir con el resto del proceso (brindar el dato para poder calcular cantidades). Se una un toast ya que no es necesario interrumpir el flujo de acciones del usuario (como sería por ejemplo con un alert).
     Toastify({
         avatar: "images/oryza-logo.png",
@@ -137,6 +143,7 @@ function quePasaCuandoCheck(){
         const elegido = document.getElementById(`checkbox${e.id}`);
         elegido.addEventListener('click',()=>{ 
             elegido.value!==null && agregarAPizzaCreada(e.id);
+            localStorage.setItem("ingredElegidoID",JSON.stringify(e.id))
             //Se inserta un toast para enfatizar que la acción de agregar un ingrediente por parte del usuario es importante para el proceso general de armar la pizza.
             Toastify({
                 avatar: "images/oryza-logo.png",
@@ -154,6 +161,7 @@ function quePasaCuandoCheck(){
 function agregarAPizzaCreada(id){
     let pusheando = listadoIngredParaElegir.find((e) => e.id == id);
     pizzaCreada.push(pusheando);
+    localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
 }
 
 
@@ -230,6 +238,7 @@ function mostrarCantidadesReceta (arrayReceta){
             <h4>${ingred.cantidadTotalNetaIngred()}g</h4> 
         </div>`;
     })
+    localStorage.setItem("listaCantidadesReceta", JSON.stringify(arrayReceta))
 }
 
 //Mostrar cards en la sección de productos carrito, cada card contiene datos del ingrediente, cantidad de unidades de compra necesarias, su precio unitario y el subtotal
@@ -263,33 +272,33 @@ function mostrarProductos(arrayProductos){
             producto.cantidad += 1;
             document.getElementById(`cant${producto.id}`).innerText =`Cantidad: ${producto.cantidad}`;
             document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*producto.precioXBolsa}`;
-            
+            localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
         })
         
         let btnEliminar = document.getElementById(`eliminar${producto.id}`);
         btnEliminar.addEventListener('click',()=>{
             if(producto.cantidad == 1){
-                // Paramos el envio del formulario submit
-                //producto.preventDefault();
-                //alert 
-                swal.fire({
-                    title: `¿Quieres eliminar este producto ${producto.nombreIngred}?`,
-                    icon: "warning",
-                    text:  `${producto.nombreIngred} será quitado del carrito.`,
-                    showCancelButton: true,
-                    confirmButtonText: "Sí, quiero quitarlo",
-                    confirmButtonColor: "#1b8f72",
-                    cancelButtonText: "No, no quiero quitarlo",
-                    cancelButtonColor: "#aa8d67cc"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        //borrar card del carrito:
-                        btnEliminar.parentElement.remove()
-                        //buscamos en el localstorage
-                        pizzaCreada = pizzaCreada.filter(item => item.id != producto.id)
-                        localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
-                    }
-                });
+                    // Paramos el envio del formulario submit
+                    //producto.preventDefault();
+                    //alert 
+                    swal.fire({
+                        title: `¿Quieres eliminar este producto ${producto.nombreIngred}?`,
+                        icon: "warning",
+                        text:  `${producto.nombreIngred} será quitado del carrito.`,
+                        showCancelButton: true,
+                        confirmButtonText: "Sí, quiero quitarlo",
+                        confirmButtonColor: "#1b8f72",
+                        cancelButtonText: "No, no quiero quitarlo",
+                        cancelButtonColor: "#aa8d67cc"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            //borrar card del carrito:
+                            btnEliminar.parentElement.remove()
+                            //buscamos en el localstorage
+                            pizzaCreada = pizzaCreada.filter(item => item.id != producto.id)
+                            localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
+                        }
+                    });
             } else{
                     producto.cantidad -= 1;
                     //Actualizao cantidad y subtotal en las cards:
@@ -314,6 +323,7 @@ function comprar(){
     })
 }
 
+let carritoFinal;
 function mostrarCarritoFinal() {
     contenedorCarrito.innerHTML = "";
 
@@ -334,9 +344,10 @@ function mostrarCarritoFinal() {
         <td>${el.cantidad}</td> `;                        
         contenedorCarrito.appendChild(productoEnCarrito);
     })
-    
+    localStorage.setItem("pizzaCreadaFinal", JSON.stringify(pizzaCreada))
+
     calcularTotal();
-    
+    document.querySelector("#btnRealizarPedido").style.display = "block";
 }
 
 ////Calcular total:
@@ -345,7 +356,7 @@ const calcularTotal = () =>{
     let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
     precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
     
-     
+    localStorage.setItem("total", JSON.stringify(total))
 }
 
 function recuperar() {
