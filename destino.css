@@ -160,7 +160,14 @@ flex-wrap: wrap;
 
 #btnRealizarPedido{
 display:none;
+text-decoration: none;
+list-style-type: none;
+width:10rem;
 }
+#btnRealizarPedido:hover{
+  color:wheat;
+}
+
 
 .sectionNosotros .tituloNosotros {
   margin: 150px 0 50px 0;

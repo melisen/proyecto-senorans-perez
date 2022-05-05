@@ -1,5 +1,5 @@
 //DOM:
-
+const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const email = document.getElementById("email");
 const dni = document.getElementById("dni");
@@ -18,51 +18,74 @@ const transferencia = document.getElementById("transferencia");
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");*/
 
-/////////Prueba de guardar un solo input:
-const nombre = document.getElementById("nombre");
+
+
+
+//////////prueba hacer una función para ir guardando todos los datos:
+
+//declarar datoUsuario
+//declarar datoLS = "datoLS"
+function guardarDatosLS(dato, datoUsuario, datoLS){
+    dato.addEventListener("input", () => {
+        datoUsuario = dato.value;
+        console.log(datoUsuario)
+        localStorage.setItem(datoLS, JSON.stringify(datoUsuario));
+    });
+}
+////////Guardamos los inputs:
 let nombreUsuario;
-function guardarDatos(){
-nombre.addEventListener("input", () => { nombreUsuario = nombre.value;  });
-console.log(nombreUsuario)
-localStorage.setItem("nombreLS", JSON.stringify(nombreUsuario));
-}
-guardarDatos();
+let nombreLS="nombreLS";
+guardarDatosLS(nombre, nombreUsuario, nombreLS);
 
-//////////////////Ejemplo de clase:
-function guardarLocal(clave, valor){
-    localStorage.setItem(clave, valor);
-}
-arrayDatos = [apellido, email, dni, direccion, piso, localidad, telefono, metodoPago, metodoEnvio, dirFacturacion]
-function guardarTodosLosDatos(){
-    for (const dato of arrayDatos){
-        guardarLocal(dato, JSON.stringify(dato));
-    }
-}
-//////////////////////
-/*
-localStorage.setItem("apellidoLS", JSON.stringify(apellidoUsuario));
-localStorage.setItem("emailLS", JSON.stringify(emailUsuario));
-localStorage.setItem("dniLS", JSON.stringify(dnUsuario));
-localStorage.setItem("direccionLS", JSON.stringify(direccionUsuario));
-localStorage.setItem("pisoLS", JSON.stringify(pisoUsuario));
-localStorage.setItem("localidadLS", JSON.stringify(localidadUsuario));
-localStorage.setItem("telefonoLS", JSON.stringify(telefonoUsuario));
-localStorage.setItem("tarjetaLS", JSON.stringify(tarjetaUsuario));
-localStorage.setItem("pagoFacilLS", JSON.stringify(pagoFacilUsuario));
-localStorage.setItem("rapipagoLS", JSON.stringify(rapipagoUsuario));
-localStorage.setItem("transferenciaLS", JSON.stringify(transferenciaUsuario));
-localStorage.setItem("envioDomicilioLS", JSON.stringify(envioDomicilioUsuario));
-localStorage.setItem("retirarLS", JSON.stringify(retirarUsuario));
-localStorage.setItem("dirFacturacionLS", JSON.stringify(dirFacturacionUsuario));
-*/
+let apellidoUsuario;
+let apellidoLS="apellidoLS";
+guardarDatosLS(apellido, apellidoUsuario, apellidoLS);
 
-///////////////////////////MODAL//////////////////////////////////////////////////
+let emailUsuario;
+let emailLS = "emailLS";
+guardarDatosLS(email, emailUsuario, emailLS);
+
+let dniUsuario;
+let dniLS="dniLS";
+guardarDatosLS(dni, dniUsuario, dniLS);
+
+let direccionUsuario;
+let direccionLS="direccionLS"
+guardarDatosLS(direccion, direccionUsuario, direccionLS);
+
+let pisoUsuario;
+let pisoLS="pisoLS";
+guardarDatosLS(piso, pisoUsuario, pisoLS);
+
+let localidadUsuario;
+let localidadLS="localidadLS";
+guardarDatosLS(localidad, localidadUsuario, localidadLS);
+
+let telefonoUsuario;
+let telefonoLS="telefonoLS";
+guardarDatosLS(telefono, telefonoUsuario, telefonoLS);
+
+let metodoPagoUsuario;
+let metodoPagoLS="metodoPagoLS";
+guardarDatosLS(metodoPago, metodoPagoUsuario, metodoPagoLS);
+
+let metodoEnvioUsuario;
+let metodoEnvioLS="metodoEnvioLS";
+guardarDatosLS(metodoEnvio, metodoEnvioUsuario, metodoEnvioLS);
+
+let dirFacturacionUsuario;
+let dirFacturacionLS="dirFacturacionLS";
+guardarDatosLS(dirFacturacion, dirFacturacionUsuario, dirFacturacionLS);
 
 
+
+///////////////////////////   MODAL   //////////////////////////////////////////////////
 
 //DOM:
+
 const contenedorResumen = document.getElementById("contenedorResumen");
 const contSubtotal = document.getElementById("contSubtotal");
+const contMetodoPago = document.getElementById("contMetodoPago");
 const contTipoEnvio = document.getElementById("contTipoEnvio");
 const contCostoEnvio = document.getElementById("contCostoEnvio");
 const contTotalPedido = document.getElementById("contTotalPedido");
@@ -71,20 +94,24 @@ const contTotalPedido = document.getElementById("contTotalPedido");
 
 let costoEnvio;
 let calcularEnvio = () =>{
-    if (metodoEnvio = domicilio){
-        costoEnvio = 0;
+    if ((metodoEnvio.value !== "Retiro en local") || (localidad.value=="6")  ){
+       costoEnvio = 450;
     }else{
-        costoEnvio = 450;
+        costoEnvio = 0;
     }
+    console.log(costoEnvio)
 }
+
 let totalCompra;
+
+
+
+
 function mostrarResumenCompra(){
-
-        //RECUPERAR LOCAL STORAGE:
-    const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
-    let subtotal = JSON.parse(localStorage.getItem('total'));
-
-
+    //RECUPERAR LOCAL STORAGE:
+const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
+let subtotal = JSON.parse(localStorage.getItem('total'));
+    
     pizzaCreadaFinal.forEach(el => {
         const productoEnResumen = document.createElement('tr');
         productoEnResumen.className = 'productoEnResumen';
@@ -94,25 +121,28 @@ function mostrarResumenCompra(){
         <td>${el.GramosEnBolsa}  g</td>
         <td>$${el.precioXBolsa} </td>
         <td>${el.cantidad}</td> `;                        
-        contenedorResumen.appendChild(productoEnResumen);
-
-        //Rellenar el modal con lo de abajo , crear los elementos en este función en vez de solo rellenarlos
+        contenedorResumen.appendChild(productoEnResumen);      
     })
 
-    contSubtotal.innerText=`Subtotal: $${subtotal}`
-
-    contMetodoPago.innerText = `Método de pago: ${metodoPago.value}`
-
-    contTipoEnvio.innerText=`Tipo de Envío: ${metodoEnvio.value}`
-
-    calcularEnvio();
-    contCostoEnvio.innerText=`Costo de envío: $${costoEnvio}`
-
-    totalCompra = subtotal + costoEnvio;
-    contTotalPedido.innerText=`TOTAL DEL PEDIDO: $${totalCompra}`
+    contSubtotal.innerHTML=`$${subtotal}`;
     
+    //contMetodoPago.innerHTML = ` ${metodoPago.value}`;
+
+    //contTipoEnvio.innerHTML=`${metodoEnvio.value}`;
+
+    //contCostoEnvio.innerHTML=`$${costoEnvio}`;
+
+    //totalCompra = subtotal + costoEnvio;
+   // contTotalPedido.innerHTML=`$${totalCompra}`;
 }
+        
 
+
+
+calcularEnvio();
 mostrarResumenCompra();
-
-console.log(nombre)
+/*
+contSubtotal.innerHTML=`
+<th scope="row">Subtotal: </td>
+<td>$ ${subtotal}</td>`;
+contenedorResumen.appendChild(contSubtotal);*/
