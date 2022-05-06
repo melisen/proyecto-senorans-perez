@@ -103,6 +103,7 @@
                                 <label class="form-check-label" for="inlineRadio1">
                                   Tarjeta de débito o crédito
                                 </label>
+                             
                                 <div>
                                     <img src="images/tarjeta.png" alt="tarjetas" class="imgForm">
                                 </div>
@@ -134,11 +135,60 @@
                                     <img src="images/rapipago.png" alt="Pago Fácil" class="imgForm">
                                 </div>
                             </div>
-                              
-                               
+                           
                         </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btnCompletarDatosTarjeta">
+                          Completar datos de tarjeta
+                        </button>
+                    
                     </div>
 
+                                                  <!-- Modal tarjeta-->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Pago con tarjeta</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  
+                                  <div class="itemForm">
+                                    <input type="number" class="form-control" placeholder="" id="numeroTarjeta">
+                                    <div id="" class="form-text">Número de la tarjeta</div>                                    
+                                </div> 
+                                <div class="itemForm ">
+                                  <input type="number" class="form-control" placeholder="" id="vencimientoTarjeta">
+                                  <div id="" class="form-text">Fecha de vencimiento de la tarjeta</div>                                    
+                              </div>
+                              <div class="itemForm">
+                                <input type="number" class="form-control" placeholder="" id="codigoTarjeta">
+                                <div id="" class="form-text">Código de seguridad de la tarjeta</div>                                    
+                            </div> 
+                                <div class="itemForm">
+                                    <input type="text" class="form-control" placeholder="" id="nombreTitular">
+                                    <div id="" class="form-text">Nombre del titular</div>
+                                </div>
+                                <div class="itemForm ">
+                                  <input type="text" class="form-control" placeholder="" id="apellidoTitular">
+                                  <div id="" class="form-text">Apellido del titular</div>
+                              </div>
+                              <div class="itemForm ">
+                                <input type="number" class="form-control" placeholder="" id="dniTitular">
+                                <div id="" class="form-text">DNI del titular</div>                                    
+                            </div> 
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <!------- Fin del modal de la tarjeta ------->
                     <div class="col-11 metodosPago" id="metodosDeEnvio">
                       <legend>Método de envío:</legend>
                       <div class="col-10 itemsPago">
@@ -172,7 +222,7 @@
         </div>
     </div>
 
-<!-- MODAL----------------------------------->
+<!-- MODAL  Resumen del pedido----------------------------------->
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="btnEnviarPedido">
   Enviar pedido
@@ -228,7 +278,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Pagar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnPagar">Pagar</button>
       </div>
     </div>
   </div>

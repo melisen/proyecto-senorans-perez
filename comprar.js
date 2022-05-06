@@ -16,14 +16,23 @@ const rapipago = document.getElementById("rapipago");
 const transferencia = document.getElementById("transferencia");  
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");
+const numeroTarjeta = document.getElementById("numeroTarjeta");
+const vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
+const codigoTarjeta = document.getElementById("codigoTarjeta");
+const nombreTitular = document.getElementById("nombreTitular");
+const apellidoTitular = document.getElementById("apellidoTitular");
+const dniTitular = document.getElementById("dniTitular");
 //DOM para el MODAL:
 const btnEnviarPedido = document.getElementById("btnEnviarPedido");
 const contenedorResumen = document.getElementById("contenedorResumen");
 const contSubtotal = document.getElementById("contSubtotal");
 const contMetodoPago = document.getElementById("contMetodoPago");
+const btnCompletarDatosTarjeta = document.getElementById("btnCompletarDatosTarjeta");
 const contTipoEnvio = document.getElementById("contTipoEnvio");
 const contCostoEnvio = document.getElementById("contCostoEnvio");
 const contTotalPedido = document.getElementById("contTotalPedido");
+const btnPagar = document.getElementById("btnPagar");
+
 
 
 let checkPago = metodosDePago.querySelectorAll('[type=radio]')
@@ -34,6 +43,7 @@ checkPago.forEach(valor =>{
         switch (valor.value) {
             case 'tarjeta':
                 localStorage.setItem(valor.value,valor.checked)
+                btnCompletarDatosTarjeta.style.display= "block";
                 break;
             case 'transferencia':
                 localStorage.setItem(valor.value,valor.checked)
@@ -86,9 +96,7 @@ checkEnvio.forEach(valor =>{
 ///////////////////////////   MODAL   Resumen de compra   //////////////////////////////////////////////////
 let costoEnvio;
 let localidadElegida;
-//RECUPERAR LOCAL STORAGE datos del otro html:
-const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
-let subtotal = JSON.parse(localStorage.getItem('total'));
+
 
 
 
@@ -99,7 +107,8 @@ localidad.addEventListener("change", () =>{
 })
 
 function calcularEnvio(){
-    if((metodoEnvioElegido ==="Retiro en local") && (localidadElegida!==6)){
+    //if((metodoEnvioElegido ==="Retiro en local") && (localidadElegida!==6)){
+        if ((metodoEnvioElegido ==="Retiro en local") && (localidadElegida!==6)){
         costoEnvio = 0;
     }else{
         costoEnvio = 450;
@@ -110,6 +119,10 @@ function calcularEnvio(){
 function mostrarResumenCompra(){
 
     calcularEnvio();
+
+    //RECUPERAR LOCAL STORAGE datos del otro html:
+    const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
+    let subtotal = JSON.parse(localStorage.getItem('total'));
 
     pizzaCreadaFinal.forEach(el => {
         const productoEnResumen = document.createElement('tr');
@@ -140,6 +153,17 @@ btnEnviarPedido.addEventListener("click", () =>{
     mostrarResumenCompra();
 })
 
+btnPagar.addEventListener("click", () => {
+    Toastify({
+        avatar: "images/oryza-logo.png",
+        text: "¡Muchas gracias por tu compra!",
+        gravity: "bottom",
+        position: "right",
+        style:{
+            background: "rgba(65, 44, 16, 0.897)"
+        }
+    }).showToast();   
+})
 
 
 //////////////////////////////////////////////// Almacenar datos del formulario en localStorage:
@@ -198,3 +222,26 @@ let dirFacturacionUsuario;
 let dirFacturacionLS="dirFacturacionLS";
 guardarDatosLS(dirFacturacion, dirFacturacionUsuario, dirFacturacionLS);
 
+let numeroTarjetaUsuario;
+let numeroTarjetaLS = "numeroTarjetaLS";
+guardarDatosLS(numeroTarjeta, numeroTarjetaUsuario, numeroTarjetaLS);
+
+let codigoTarjetaUsuario;
+let codigoTarjetaLS="codigoTarjetaLS";
+guardarDatosLS(codigoTarjeta, codigoTarjetaUsuario, codigoTarjetaLS);
+
+let vencimientoTarjetaUsuario;
+let vencimientoTarjetaLS="vencimientoTarjetaLS";
+guardarDatosLS(vencimientoTarjeta, vencimientoTarjetaUsuario, vencimientoTarjetaLS);
+
+let nombreTitularUsuario;
+let nombreTitularLS="nombreTitularLS";
+guardarDatosLS(nombreTitular, nombreTitularUsuario, nombreTitularLS);
+
+let apellidoTitularUsuario;
+let apellidoTitularLS="apellidoTitularLS";
+guardarDatosLS(apellidoTitular, apellidoTitularUsuario, apellidoTitularLS);
+
+let dniTitularUsuario;
+let dniTitularLS="dniTitularLS";
+guardarDatosLS(dniTitular, dniTitularUsuario, dniTitularLS);

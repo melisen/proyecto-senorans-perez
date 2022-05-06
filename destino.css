@@ -167,7 +167,9 @@ width:10rem;
 #btnRealizarPedido:hover{
   color:wheat;
 }
-
+#btnCompletarDatosTarjeta{
+  display:none;
+}
 
 .sectionNosotros .tituloNosotros {
   margin: 150px 0 50px 0;
