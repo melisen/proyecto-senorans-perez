@@ -1,0 +1,132 @@
+[
+    {
+        "id": 1,
+        "nombreIngred": "Albahaca fresca",
+        "marca": "verduTienda",
+        "pesoNeto1Pizza": 20,
+        "factorCorreccion": 2,
+        "GramosEnBolsa": 80,
+        "precioXBolsa": 150,
+        "foto": "images/ingred/albahaca.png"
+    },
+    {
+        "id": 2,
+        "nombreIngred": "Ananá",
+        "marca": "Nuestras Manos",
+        "pesoNeto1Pizza": 100,
+        "factorCorreccion": 2,
+        "GramosEnBolsa": 800,
+        "precioXBolsa": 520,
+        "foto": "images/ingred/anana.png"
+    },
+    {
+        "id": 3,
+        "nombreIngred": "Champignones",
+        "marca": "verduTIenda",
+        "pesoNeto1Pizza": 80,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 200,
+        "precioXBolsa": 380,
+        "foto": "images/ingred/mushroom.png"
+    },
+    {
+        "id": 4,
+        "nombreIngred": "Espinaca",
+        "marca": "verduTienda",
+        "pesoNeto1Pizza": 40,
+        "factorCorreccion": 1.6,
+        "GramosEnBolsa": 150,
+        "precioXBolsa": 120,
+        "foto": "images/ingred/spinach.png"
+    },
+    {
+        "id": 5,
+        "nombreIngred": "Jamón cocido",
+        "marca": "Bocatti",
+        "pesoNeto1Pizza": 30,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 130,
+        "precioXBolsa": 368,
+        "foto": "images/ingred/ham.png"
+    },
+    {
+        "id": 6,
+        "nombreIngred": "Jamón Crudo",
+        "marca": "Campos Chivilcoy",
+        "pesoNeto1Pizza": 30,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 100,
+        "precioXBolsa": 464,
+        "foto": "images/ingred/jamon-crudo.png"
+    },
+    {
+        "id": 7,
+        "nombreIngred": "Mozzarella",
+        "marca": "Vacalín",
+        "pesoNeto1Pizza": 80,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 500,
+        "precioXBolsa": 560,
+        "foto": "images/ingred/mozzarella.png"
+    },
+    {
+        "id": 8,
+        "nombreIngred": "Orégano",
+        "marca": "Yuspe",
+        "pesoNeto1Pizza": 3,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 10,
+        "precioXBolsa": 84,
+        "foto": "images/ingred/oregano.png"
+    },
+    {
+        "id": 9,
+        "nombreIngred": "Queso Azul",
+        "marca": "Bavaria",
+        "pesoNeto1Pizza": 30,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 140,
+        "precioXBolsa": 408,
+        "foto": "images/ingred/queso-azul.png"
+    },
+    {
+        "id": 10,
+        "nombreIngred": "Queso Sardo",
+        "marca": "Vacalín",
+        "pesoNeto1Pizza": 15,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 250,
+        "precioXBolsa": 375,
+        "foto": "images/ingred/cheese.png"
+    },
+    {
+        "id": 11,
+        "nombreIngred": "Rúcula",
+        "marca": "verduTienda",
+        "pesoNeto1Pizza": 40,
+        "factorCorreccion": 1.6,
+        "GramosEnBolsa": 150,
+        "precioXBolsa": 120,
+        "foto": "images/ingred/arugula.png"
+    },
+    {
+        "id": 12,
+        "nombreIngred": "Tomate fresco",
+        "marca": "verduTienda",
+        "pesoNeto1Pizza": 80,
+        "factorCorreccion": 1.1,
+        "GramosEnBolsa": 1000,
+        "precioXBolsa": 220,
+        "foto": "images/ingred/tomato.png"
+    },
+    {
+        "id": 13,
+        "nombreIngred": "Tomates Secos",
+        "marca": "El Hornero",
+        "pesoNeto1Pizza": 15,
+        "factorCorreccion": 1,
+        "GramosEnBolsa": 50,
+        "precioXBolsa": 125,
+        "foto": "images/ingred/drying.png"
+    }
+]
