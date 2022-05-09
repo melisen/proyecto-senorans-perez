@@ -11,7 +11,10 @@ fetch("ingredientes.json")
                         .then( (data) => {
                             data.forEach(element =>{
                                 arrayIngredientes.push(element);
+
                             })
+                            mostrarIngred(arrayIngredientes);
+                            quePasaCuandoCheck(arrayIngredientes);
                         
                         });
                         
@@ -20,7 +23,7 @@ recuperarIngredientes();
 console.log(arrayIngredientes);
 
 //Guardar el array dentro de variable local data, y pasarle mis funciones dentro con data como parámetro.
-const recuperarConFetch = async () =>{
+/*const recuperarConFetch = async () =>{
     try{
         const respuesta = await fetch("ingredientes.json");
         const data = await respuesta.json();
@@ -31,55 +34,7 @@ const recuperarConFetch = async () =>{
     }
 }
 recuperarConFetch();
-
-/////Se agregan ingredientes de la masa al array pizzaCreada. Luego el usuario va agregando los ingredientes de la cubierta.
-const pizzaCreada = [];
-function agregarMasa(){
-    fetch("ingredientes-masa.json")
-                            .then( (respuesta) => respuesta.json() )
-                            .then( (data) => {
-                                data.forEach(element =>{
-                                    pizzaCreada.push(element);
-                                })
-                            });                            
-    }
-console.log(pizzaCreada);
-agregarMasa();
-
-
-
-//funciones para calcular con las propiedades de los objetos:
-function costoXGramo(){ 
-    return this.precioXBolsa/this.GramosEnBolsa;
-}
-//Calcular Peso Bruto:
-function pesoBruto(){ 
-    return this.pesoNeto1Pizza * this.factorCorreccion;
-}
-//Calcular el costo del ingrediente para 1 pizza:
-function costoIngred1Pizza(){
-    return this.costoXGramo()*this.pesoBruto();
-}
-function cantidadTotalNetaIngred(){
-    return cantidadPizzas*this.pesoNeto1Pizza;
-}
-//Calcular la cantidad total del ingrediente para la receta para todos los comensales
-function cantidadTotalBrutaIngred(){
-    return cantidadPizzas*this.pesoBruto();
-}
-//Calcular costo total del ingrediente en la receta para todos los comensales:
-function costoTotalIngred(){
-    return cantidadPizzas*this.costoIngred1Pizza();
-}
-//Calcular cantidad de unidades de compra necesarias del ingrediente para la receta para todos los comensales (aunque se necesite menos gramos que lo que trae el envase igualmente devolverá 1 unidad de compra entera):
-function cantUnidadesCompra(){
-    let unidades = this.cantidadTotalBrutaIngred()/this.GramosEnBolsa;
-    return  Math.ceil(unidades);
-}
-//Calcular costo de la cantidad de unidades de compra del ingrediente:
-function costoUnidadesCompra(){
-    return this.cantidad*this.precioXBolsa;
-}
+*/
 
 
 
@@ -148,11 +103,25 @@ const mostrarIngred = (arrayIngredientes) =>{
     })
 }
 
-function quePasaCuandoCheck(arrayIngredientes){
-   arrayIngredientes.forEach((e) =>{
+/////Se agregan ingredientes de la masa al array pizzaCreada. Luego el usuario va agregando los ingredientes de la cubierta.
+const pizzaCreada = [];
+function agregarMasa(){
+    fetch("ingredientes-masa.json")
+                            .then( (respuesta) => respuesta.json() )
+                            .then( (data) => {
+                                data.forEach(element =>{
+                                    pizzaCreada.push(element);
+                                })
+                            });                            
+    }
+console.log(pizzaCreada);
+agregarMasa();
+
+function quePasaCuandoCheck(arrayIng){
+   arrayIng.forEach((e) =>{
         const elegido = document.getElementById(`checkbox${e.id}`);
         elegido.addEventListener('click',()=>{ 
-            elegido.value!==null && agregarAPizzaCreada(arrayIngredientes, e.id);
+            elegido.value!==null && agregarAPizzaCreada(arrayIng, e.id);
             localStorage.setItem("ingredElegidoID",JSON.stringify(e.id))
             //Se inserta un toast para enfatizar que la acción de agregar un ingrediente por parte del usuario es importante para el proceso general de armar la pizza.
             Toastify({
@@ -244,7 +213,7 @@ function mostrarCantidadesReceta (arrayReceta){
                     class=" card-img-top img-fluid"
                     alt="${ingred.nombreIngred}"/>
             <h4>${ingred.nombreIngred.toUpperCase()}</h4>
-            <h4>${ingred.cantidadTotalNetaIngred()}g</h4> 
+            <h4>${cantidadPizzas*parseInt(ingred.pesoNeto1Pizza)}g</h4> 
         </div>`;
     })
     localStorage.setItem("listaCantidadesReceta", JSON.stringify(arrayReceta))
@@ -256,7 +225,7 @@ function mostrarProductos(arrayProductos){
     productosCarrito.innerHTML="";
     arrayProductos.forEach(producto =>{
         //Declaración de propiedad cantidad:
-        producto.cantidad = producto.cantUnidadesCompra();
+        producto.cantidad = Math.ceil(((parseInt(producto.pesoNeto1Pizza)*parseInt(producto.factorCorreccion))*cantidadPizzas)/parseInt(producto.GramosEnBolsa));
         //Creación de cards:
     const divCaja = document.createElement("div");
     divCaja.className ="caja";
@@ -268,11 +237,11 @@ function mostrarProductos(arrayProductos){
                 alt="${producto.nombreIngred}"/>
         <h4>${producto.nombreIngred.toUpperCase()}</h4>
         <h4>${producto.marca}</h4>
-        <h4>Contenido: ${producto.GramosEnBolsa}g</h4>
-        <h4>$ ${producto.precioXBolsa} c/u</h4>
+        <h4>Contenido: ${parseInt(producto.GramosEnBolsa)}g</h4>
+        <h4>$ ${parseInt(producto.precioXBolsa)} c/u</h4>
         <h4 id="cant${producto.id}"> Cantidad:${producto.cantidad}</h4>   
         <button type="button" id="agregar${producto.id}" class="btn btn-outline-secondary"> + </button> <button type="button" id="eliminar${producto.id}" class="btn btn-outline-secondary"> - </button>
-        <h3 id="subtotal${producto.id}"> Subtotal: $ ${producto.cantidad*producto.precioXBolsa}</h3>
+        <h3 id="subtotal${producto.id}"> Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}</h3>
     </div>`;
 
         //Agregar y eliminar unidades de las cards de los productos: Va cambiando la propiedad cantidad de los objetos.
@@ -280,7 +249,7 @@ function mostrarProductos(arrayProductos){
         btnAgregar.addEventListener('click',()=>{
             producto.cantidad += 1;
             document.getElementById(`cant${producto.id}`).innerText =`Cantidad: ${producto.cantidad}`;
-            document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*producto.precioXBolsa}`;
+            document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}`;
             localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
         })
         
@@ -312,7 +281,7 @@ function mostrarProductos(arrayProductos){
                     producto.cantidad -= 1;
                     //Actualizao cantidad y subtotal en las cards:
                     document.getElementById(`cant${producto.id}`).innerText =`Cantidad: ${producto.cantidad}`;
-                    document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*producto.precioXBolsa}`;
+                    document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}`;
                     localStorage.setItem('pizza', JSON.stringify(pizzaCreada));       
             }
         })
@@ -324,11 +293,9 @@ function mostrarProductos(arrayProductos){
 
 //Confirmación de compra: muestra lista final de productos y precio total.
 function comprar(){
-    btnConfirmarCompra.style.display="flex"
+    btnConfirmarCompra.style.display="flex";
     btnConfirmarCompra.addEventListener("click", () =>{
-        
         mostrarCarritoFinal();
-        pasosDeSuCompra();
     })
 }
 
@@ -339,9 +306,7 @@ function mostrarCarritoFinal() {
     tabla.style.display = "table";
  
 
-    pizzaCreada.splice(1,1);
-    
-
+    pizzaCreada.splice(1,1)
     pizzaCreada.forEach(el => {
         const productoEnCarrito = document.createElement('tr');
         productoEnCarrito.className = 'productoEnCarrito';
@@ -362,12 +327,12 @@ function mostrarCarritoFinal() {
 ////Calcular total:
 const calcularTotal = () =>{
     // método reduce() para hacer una sumatoria, devuelve el resutado que lo guardamos en una variable total. El último parámetro, que está en 0, es desde dónde va a empezar a sumar
-    let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
+    let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*parseInt(elemento.precioXBolsa)), 0);
     precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
     
     localStorage.setItem("total", JSON.stringify(total))
 }
-
+/*
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('pizza'))
     
@@ -382,7 +347,7 @@ function recuperar() {
    
    
    }
-
+*/
 ////////Llamo funciones:
 
 confirmacionSelecIngred();
