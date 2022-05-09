@@ -1,22 +1,50 @@
 /*Objetivos: calcular la cantidad en gramos que necesito de cada ingrediente para preparar una receta para la cantidad de comensales (pizza individual) que ingrese e usuario, y calcular el costo de ingredientes y el costo final.
 Aclaración: el "factor de corrección" tiene en cuenta el desperdicio para calcular la cantidad de compra de un ingrediente y tener mejor control de gastos. Por ejemplo, el factor de Corrección de la Harina es 1 porque no tiene desperdicio, mientras que el factor de la naranja para jugo es 2 porque el 50% de una naranja aproximadamente es desperdicio cuando se compra naranja para hacer jugo. O sea si necesito 50g de jugo (es el peso Neto para mi receta), necesito comprar 100g de naranjas (peso Bruto).*/
-//Cada objeto creado con la clase Ingrediente contempla como propiedad el peso neto para 1 pizza individual.
-//Variables globales:
 
 
+//Intento guardar el array convertido desde el json en una variable global arrayIngredientes
 
-//EJEMPLO FETCH
-/* fetch("https://jsonplaceholder.typicode.com/posts")
-    .then( (respuesta) => respuesta.json() )
-    .then( (data) => console.log(data)); */
-const albahaca = fetch(ingredientes.json)
+const arrayIngredientes = [];
+function recuperarIngredientes(){
+fetch("ingredientes.json")
                         .then( (respuesta) => respuesta.json() )
                         .then( (data) => {
-                                return data[0];
+                            data.forEach(element =>{
+                                arrayIngredientes.push(element);
+                            })
+                        
                         });
-console.log(data);
-console.log(albahaca);
+                        
+}
+recuperarIngredientes();
+console.log(arrayIngredientes);
 
+//Guardar el array dentro de variable local data, y pasarle mis funciones dentro con data como parámetro.
+const recuperarConFetch = async () =>{
+    try{
+        const respuesta = await fetch("ingredientes.json");
+        const data = await respuesta.json();
+        mostrarIngred(data);
+        quePasaCuandoCheck(data);
+    } catch(error){
+        console.log(error)
+    }
+}
+recuperarConFetch();
+
+/////Se agregan ingredientes de la masa al array pizzaCreada. Luego el usuario va agregando los ingredientes de la cubierta.
+const pizzaCreada = [];
+function agregarMasa(){
+    fetch("ingredientes-masa.json")
+                            .then( (respuesta) => respuesta.json() )
+                            .then( (data) => {
+                                data.forEach(element =>{
+                                    pizzaCreada.push(element);
+                                })
+                            });                            
+    }
+console.log(pizzaCreada);
+agregarMasa();
 
 
 
@@ -56,8 +84,7 @@ function costoUnidadesCompra(){
 
 
 
-//array de ingredientes posibles para agregar a creaTuPizza
-const listadoIngredParaElegir =[albahaca, ananaLata, champignones, espinaca, jamonCoc, jamonCrudo, mozzarella, oregano, quesoAzul, quesoSardo, rucula, tomate, tomatesSecos];
+
 
 ///DOM:
 const ingredientesSeleccionar = document.querySelector(".ingredientesSeleccionar");
@@ -71,8 +98,7 @@ const precioTotal = document.getElementById('precioTotal');
 const tabla = document.getElementById('tabla');
 
 
-/////Se concaneta la receta de masa de pizza con la cubierta creada por el usuario:
-const pizzaCreada = [premezcla, agua, sal, aceiteOliva];
+
 /*Qué guardo en local Storage: CLAVES:
 cantidad de comensales/pizzas --> 'cantidadPizzas'
 ingrediente checkeado --> "ingredElegidoID"
@@ -104,8 +130,8 @@ comensales.addEventListener("change",() =>{
 
 //Ver los productos disponibles para seleccionar:
 //Usuario selecciona ingredientes: clickea el checkbox de cada card de cada ingrediente
-const mostrarIngred = () =>{
-    listadoIngredParaElegir.forEach((e) =>{
+const mostrarIngred = (arrayIngredientes) =>{
+    arrayIngredientes.forEach((e) =>{
         const cardIngredSelec = document.createElement("div");
         cardIngredSelec.className ="cardIngredSelec";
         ingredientesSeleccionar.appendChild(cardIngredSelec);
@@ -122,11 +148,11 @@ const mostrarIngred = () =>{
     })
 }
 
-function quePasaCuandoCheck(){
-    listadoIngredParaElegir.forEach((e) =>{
+function quePasaCuandoCheck(arrayIngredientes){
+   arrayIngredientes.forEach((e) =>{
         const elegido = document.getElementById(`checkbox${e.id}`);
         elegido.addEventListener('click',()=>{ 
-            elegido.value!==null && agregarAPizzaCreada(e.id);
+            elegido.value!==null && agregarAPizzaCreada(arrayIngredientes, e.id);
             localStorage.setItem("ingredElegidoID",JSON.stringify(e.id))
             //Se inserta un toast para enfatizar que la acción de agregar un ingrediente por parte del usuario es importante para el proceso general de armar la pizza.
             Toastify({
@@ -142,9 +168,8 @@ function quePasaCuandoCheck(){
     })
 }
 
-function agregarAPizzaCreada(id){
-    let pusheando = listadoIngredParaElegir.find((e) => e.id == id);
-    pizzaCreada.push(pusheando);
+function agregarAPizzaCreada(arrayIng, id){
+    pizzaCreada.push(arrayIng.find((e) => e.id == id));
     localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
 }
 
@@ -207,7 +232,7 @@ function alertComensales(){
 
 //Calcular cantidades de la receta con el método, dentro de cada card de ingrediente:
 function mostrarCantidadesReceta (arrayReceta){
-    arrayReceta.innerHTML = "";
+    cantidadesReceta.innerHTML = "";
     
     arrayReceta.forEach(ingred => {
     const cajaCantidadesReceta = document.createElement("div");
@@ -359,8 +384,7 @@ function recuperar() {
    }
 
 ////////Llamo funciones:
-mostrarIngred();
-quePasaCuandoCheck();
+
 confirmacionSelecIngred();
 recuperar();
 

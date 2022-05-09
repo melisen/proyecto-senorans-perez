@@ -66,3 +66,9 @@ const rucula = new Ingrediente (11, "Rúcula", "verduTienda", 40, 1.6, 150, 120,
 const sal = new Ingrediente(17, "Sal fina", "Celusal", 1, 1, 500, 80, 'images/ingred/salt-shaker.png');
 const tomate = new Ingrediente (12, "Tomate fresco", "verduTienda", 80, 1.1, 1000, 220, 'images/ingred/tomato.png');
 const tomatesSecos = new Ingrediente(13, "Tomates Secos", "El Hornero", 15, 1, 50, 125, 'images/ingred/drying.png');
+
+
+//array de ingredientes posibles para agregar a creaTuPizza
+const listadoIngredParaElegir =[albahaca, ananaLata, champignones, espinaca, jamonCoc, jamonCrudo, mozzarella, oregano, quesoAzul, quesoSardo, rucula, tomate, tomatesSecos];
+
+const pizzaCreada = [premezcla, agua, sal, aceiteOliva];
