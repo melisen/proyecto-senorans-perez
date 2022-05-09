@@ -16,13 +16,16 @@ const rapipago = document.getElementById("rapipago");
 const transferencia = document.getElementById("transferencia");  
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");
+
+//DOM Modal Tarjeta:
 const numeroTarjeta = document.getElementById("numeroTarjeta");
 const vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
 const codigoTarjeta = document.getElementById("codigoTarjeta");
 const nombreTitular = document.getElementById("nombreTitular");
 const apellidoTitular = document.getElementById("apellidoTitular");
 const dniTitular = document.getElementById("dniTitular");
-//DOM para el MODAL:
+
+//DOM para el MODAL Resumen de compra:
 const btnEnviarPedido = document.getElementById("btnEnviarPedido");
 const contenedorResumen = document.getElementById("contenedorResumen");
 const contSubtotal = document.getElementById("contSubtotal");
@@ -34,7 +37,14 @@ const contTotalPedido = document.getElementById("contTotalPedido");
 const btnPagar = document.getElementById("btnPagar");
 
 
+/////// Rellenar formulario:
 
+let localidadElegida;
+localidad.addEventListener("change", () =>{
+    localidadElegida = parseInt(localidad.value);
+})
+
+// Seleccionar medio de pago:
 let checkPago = metodosDePago.querySelectorAll('[type=radio]')
 let metodoPagoElegido;
 checkPago.forEach(valor =>{
@@ -42,17 +52,21 @@ checkPago.forEach(valor =>{
     valor.addEventListener('click',()=>{
         switch (valor.value) {
             case 'tarjeta':
-                localStorage.setItem(valor.value,valor.checked)
+                localStorage.setItem(valor.value,valor.checked);
+                formularioLS.push(valor.value);
                 btnCompletarDatosTarjeta.style.display= "block";
                 break;
             case 'transferencia':
-                localStorage.setItem(valor.value,valor.checked)
+                localStorage.setItem(valor.value,valor.checked);
+                formularioLS.push(valor.value);
                 break;
             case 'pagoFacil':
-                localStorage.setItem(valor.value,valor.checked)
+                localStorage.setItem(valor.value,valor.checked);
+                formularioLS.push(valor.value);
                 break;
             case 'rapipago':
-                localStorage.setItem(valor.value,valor.checked)
+                localStorage.setItem(valor.value,valor.checked);
+                formularioLS.push(valor.value);
                 break;
         
             default:
@@ -66,6 +80,7 @@ checkPago.forEach(valor =>{
     })
 })
 
+//Seleccionar medio de envío:
 let checkEnvio = metodosDeEnvio.querySelectorAll('[type=radio]');
 let metodoEnvioElegido;
 checkEnvio.forEach(valor =>{
@@ -74,9 +89,11 @@ checkEnvio.forEach(valor =>{
         switch (valor.value) {
             case 'Retiro en local':
                 localStorage.setItem(valor.value,valor.checked)
+                formularioLS.push(valor.value);
                 break;
             case 'Envío a domicilio':
                 localStorage.setItem(valor.value,valor.checked)
+                formularioLS.push(valor.value);
                 break;
         
             default:
@@ -90,19 +107,21 @@ checkEnvio.forEach(valor =>{
     })
 })
 
+dirFacturacion.addEventListener("click", () =>{
+    dirFacturacion.checked ?  formularioLS.push(dirFacturacion.value="true"):  formularioLS.push(dirFacturacion.value="false");
+    console.log(formularioLS);
+})
 
+btnEnviarPedido.addEventListener("click", () =>{
+    mostrarResumenCompra();
+})
 
 
 ///////////////////////////   MODAL   Resumen de compra   //////////////////////////////////////////////////
-let costoEnvio;
-let localidadElegida;
+
 
 //Calcular costo de envío:
-
-localidad.addEventListener("change", () =>{
-    localidadElegida = parseInt(localidad.value);
-})
-
+let costoEnvio;
 function calcularEnvio(){
     //if((metodoEnvioElegido ==="Retiro en local") && (localidadElegida!==6)){
         if ((metodoEnvioElegido ==="Retiro en local") && (localidadElegida!==6)){
@@ -113,6 +132,7 @@ function calcularEnvio(){
     console.log(costoEnvio);
 }   
 
+//Rellena modal Resumen de compra:
 function mostrarResumenCompra(){
 
     calcularEnvio();
@@ -145,11 +165,7 @@ function mostrarResumenCompra(){
     let totalCompra = subtotal + costoEnvio;
     contTotalPedido.innerHTML=`$${totalCompra}`;
 }
-        
 
-btnEnviarPedido.addEventListener("click", () =>{
-    mostrarResumenCompra();
-})
 
 btnPagar.addEventListener("click", () => {
     Toastify({
@@ -164,14 +180,17 @@ btnPagar.addEventListener("click", () => {
 })
 
 
-//////////////////////////////////////////////// Almacenar datos del formulario en localStorage:
+///////////// Almacenar datos del formulario en localStorage:
+const formularioLS = [];
 //declarar datoUsuario
 //declarar datoLS = "datoLS"
 function guardarDatosLS(dato, datoUsuario, datoLS){
     dato.addEventListener("input", () => {
         datoUsuario = dato.value;
-        console.log(datoUsuario)
         localStorage.setItem(datoLS, JSON.stringify(datoUsuario));
+        formularioLS.push(datoUsuario);
+        console.log(formularioLS);
+        localStorage.setItem('formulario', JSON.stringify(formularioLS));
     });
 }
 
@@ -216,10 +235,6 @@ let metodoEnvioUsuario;
 let metodoEnvioLS="metodoEnvioLS";
 guardarDatosLS(metodoEnvio, metodoEnvioUsuario, metodoEnvioLS);
 
-let dirFacturacionUsuario;
-let dirFacturacionLS="dirFacturacionLS";
-guardarDatosLS(dirFacturacion, dirFacturacionUsuario, dirFacturacionLS);
-
 let numeroTarjetaUsuario;
 let numeroTarjetaLS = "numeroTarjetaLS";
 guardarDatosLS(numeroTarjeta, numeroTarjetaUsuario, numeroTarjetaLS);
@@ -243,3 +258,16 @@ guardarDatosLS(apellidoTitular, apellidoTitularUsuario, apellidoTitularLS);
 let dniTitularUsuario;
 let dniTitularLS="dniTitularLS";
 guardarDatosLS(dniTitular, dniTitularUsuario, dniTitularLS);
+
+
+
+function recuperarFormulario() {
+    let recuperarFormLS = JSON.parse(localStorage.getItem('formulario'))
+    if(recuperarFormLS){
+        recuperarFormLS.forEach(el=> {
+            formularioLS.push(el);
+            console.log(formularioLS);
+        })
+    }
+}
+recuperarFormulario();
