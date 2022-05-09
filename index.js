@@ -10,6 +10,12 @@ fetch("ingredientes.json")
                         .then( (respuesta) => respuesta.json() )
                         .then( (data) => {
                             data.forEach(element =>{
+                                element.pesoNeto1Pizza=parseInt(element.pesoNeto1Pizza);
+                                element.factorCorreccion=parseInt(element.factorCorreccion);
+                                element.GramosEnBolsa=parseInt(element.GramosEnBolsa);
+                                element.precioXBolsa=parseInt(element.precioXBolsa);
+
+
                                 arrayIngredientes.push(element);
 
                             })
@@ -213,7 +219,7 @@ function mostrarCantidadesReceta (arrayReceta){
                     class=" card-img-top img-fluid"
                     alt="${ingred.nombreIngred}"/>
             <h4>${ingred.nombreIngred.toUpperCase()}</h4>
-            <h4>${cantidadPizzas*parseInt(ingred.pesoNeto1Pizza)}g</h4> 
+            <h4>${cantidadPizzas*ingred.pesoNeto1Pizza}g</h4> 
         </div>`;
     })
     localStorage.setItem("listaCantidadesReceta", JSON.stringify(arrayReceta))
@@ -225,7 +231,7 @@ function mostrarProductos(arrayProductos){
     productosCarrito.innerHTML="";
     arrayProductos.forEach(producto =>{
         //Declaración de propiedad cantidad:
-        producto.cantidad = Math.ceil(((parseInt(producto.pesoNeto1Pizza)*parseInt(producto.factorCorreccion))*cantidadPizzas)/parseInt(producto.GramosEnBolsa));
+        producto.cantidad = Math.ceil(((producto.pesoNeto1Pizza*producto.factorCorreccion)*cantidadPizzas)/producto.GramosEnBolsa);
         //Creación de cards:
     const divCaja = document.createElement("div");
     divCaja.className ="caja";
@@ -237,11 +243,11 @@ function mostrarProductos(arrayProductos){
                 alt="${producto.nombreIngred}"/>
         <h4>${producto.nombreIngred.toUpperCase()}</h4>
         <h4>${producto.marca}</h4>
-        <h4>Contenido: ${parseInt(producto.GramosEnBolsa)}g</h4>
-        <h4>$ ${parseInt(producto.precioXBolsa)} c/u</h4>
+        <h4>Contenido: ${producto.GramosEnBolsa}g</h4>
+        <h4>$ ${producto.precioXBolsa} c/u</h4>
         <h4 id="cant${producto.id}"> Cantidad:${producto.cantidad}</h4>   
         <button type="button" id="agregar${producto.id}" class="btn btn-outline-secondary"> + </button> <button type="button" id="eliminar${producto.id}" class="btn btn-outline-secondary"> - </button>
-        <h3 id="subtotal${producto.id}"> Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}</h3>
+        <h3 id="subtotal${producto.id}"> Subtotal: $ ${producto.cantidad*producto.precioXBolsa}</h3>
     </div>`;
 
         //Agregar y eliminar unidades de las cards de los productos: Va cambiando la propiedad cantidad de los objetos.
@@ -249,7 +255,7 @@ function mostrarProductos(arrayProductos){
         btnAgregar.addEventListener('click',()=>{
             producto.cantidad += 1;
             document.getElementById(`cant${producto.id}`).innerText =`Cantidad: ${producto.cantidad}`;
-            document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}`;
+            document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*producto.precioXBolsa}`;
             localStorage.setItem('pizza', JSON.stringify(pizzaCreada))
         })
         
@@ -281,7 +287,7 @@ function mostrarProductos(arrayProductos){
                     producto.cantidad -= 1;
                     //Actualizao cantidad y subtotal en las cards:
                     document.getElementById(`cant${producto.id}`).innerText =`Cantidad: ${producto.cantidad}`;
-                    document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*parseInt(producto.precioXBolsa)}`;
+                    document.getElementById(`subtotal${producto.id}`).innerText =`Subtotal: $ ${producto.cantidad*producto.precioXBolsa}`;
                     localStorage.setItem('pizza', JSON.stringify(pizzaCreada));       
             }
         })
@@ -327,27 +333,28 @@ function mostrarCarritoFinal() {
 ////Calcular total:
 const calcularTotal = () =>{
     // método reduce() para hacer una sumatoria, devuelve el resutado que lo guardamos en una variable total. El último parámetro, que está en 0, es desde dónde va a empezar a sumar
-    let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*parseInt(elemento.precioXBolsa)), 0);
+    let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
     precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
     
     localStorage.setItem("total", JSON.stringify(total))
 }
-/*
+
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem('pizza'))
-    
     if(recuperarLS){
         recuperarLS.forEach(el=> {
+            el.pesoNeto1Pizza=parseInt(element.pesoNeto1Pizza);
+            el.factorCorreccion=parseInt(el.factorCorreccion);
+            el.GramosEnBolsa=parseInt(el.GramosEnBolsa);
+            el.precioXBolsa=parseInt(el.precioXBolsa);
             mostrarCantidadesReceta(recuperarLS);
             mostrarProductos(recuperarLS);
             pizzaCreada.push(el)
             mostrarCarritoFinal()
         })
     }
-   
-   
-   }
-*/
+}
+
 ////////Llamo funciones:
 
 confirmacionSelecIngred();

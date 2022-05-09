@@ -97,9 +97,6 @@ checkEnvio.forEach(valor =>{
 let costoEnvio;
 let localidadElegida;
 
-
-
-
 //Calcular costo de envío:
 
 localidad.addEventListener("change", () =>{
@@ -124,6 +121,7 @@ function mostrarResumenCompra(){
     const pizzaCreadaFinal = JSON.parse(localStorage.getItem('pizzaCreadaFinal'));
     let subtotal = JSON.parse(localStorage.getItem('total'));
 
+    contenedorResumen.innerHTML="";
     pizzaCreadaFinal.forEach(el => {
         const productoEnResumen = document.createElement('tr');
         productoEnResumen.className = 'productoEnResumen';

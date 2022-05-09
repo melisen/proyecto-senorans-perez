@@ -47,7 +47,7 @@
             <form id="formEnvio">
                 <fieldset>
                     <div class="col-11" id="datosDeEnvio">
-                        <legend>Datos de envío:</legend>
+                        <legend class="articulo">Datos de envío:</legend>
                     
                         <div class="itemForm col-5">
                         
@@ -94,54 +94,84 @@
                         </div>
                     </div>
                     
-                    <div class="col-11 metodosPago" id="metodosDePago">
-                        <legend>Método de pago:</legend>
+                    <div class="col-11 metodosPago" id="metodosDeEnvio">
+                      <legend class="articulo">Método de envío:</legend>
+                      <div class="col-10 itemsPago">
+                          <div class="form-check ">
+                              <input class="form-check-input seleccionMetodosEnvio" type="radio" name="inlineRadioOptions" id="retirar" value="Retiro en local">
+                              <label class="form-check-label" for="inlineRadio1">
+                                Retirar gratis en nuestro local de la calle Timbúes.
+                              </label>
+                          </div>
+                          <div class="form-check ">
+                            <input class="form-check-input seleccionMetodosEnvio" type="radio" name="flexRadioDefault" id="envioDomicilio" value="Envío a domicilio" >
+                            <label class="form-check-label" for="flexRadioDefault2">
+                             Envío a domicilio GRATIS dentro del partido de Morón. Otras localidades: costo $450.
+                            </label>
+                          </div>                          
+                      </div>
+                  </div>
 
-                        <div class="col-10 itemsPago">
-                            <div class="form-check form-check-inline">
+                    <div class="col-12 metodosPago" id="metodosDePago">
+                        <legend class="articulo">Método de pago:</legend>
+                        <div class="cardsMetodosPago">
+                          <div class="card text-center itemsPago" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
                                 <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjeta" value="tarjeta">
                                 <label class="form-check-label" for="inlineRadio1">
-                                  Tarjeta de débito o crédito
-                                </label>
-                             
-                                <div>
-                                    <img src="images/tarjeta.png" alt="tarjetas" class="imgForm">
-                                </div>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="transferencia">
-                              <label class="form-check-label" for="flexRadioDefault2">
-                               Transferencia (25% off)
+                                Tarjeta de débito o crédito
                               </label>
-                              <div>
-                                  <img src="images/transferencia.png" alt="transferencia" class="imgForm">
-                              </div>
-                            </div>
-                              <div class="form-check form-check-inline">
-                                    <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="pagoFacil">
-                                    <label class="form-check-label" for="flexRadioDefault4">
-                                     Pago Fácil
-                                    </label>
-                                    <div>
-                                        <img src="images/pagofacil.png" alt="Pago Fácil" class="imgForm">
-                                    </div>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="rapipago">
-                                <label class="form-check-label" for="inlineRadio2">
-                                  Rapipago
+                            </li>
+                              <li class="list-group-item divImagen"><img src="images/tarjeta.png" alt="tarjetas" class="imgForm">
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="card text-center itemsPago" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="transferencia">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                 Transferencia (25% off)
                                 </label>
-                                <div>
-                                    <img src="images/rapipago.png" alt="Pago Fácil" class="imgForm">
-                                </div>
-                            </div>
-                           
+                            </li>
+                              <li class="list-group-item divImagen"><img src="images/transferencia.png" alt="transferencia" class="imgForm">
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="card text-center itemsPago" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="pagoFacil">
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                 Pago Fácil
+                                </label>
+                            </li>
+                              <li class="list-group-item divImagen"><img src="images/pagofacil.png" alt="Pago Fácil" class="imgForm">
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="card text-center itemsPago" style="width: 18rem;">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="rapipago">
+                                  <label class="form-check-label" for="inlineRadio2">
+                                    Rapipago
+                                  </label>
+                            </li>
+                              <li class="list-group-item divImagen"><img src="images/rapipago.png" alt="Pago Fácil" class="imgRapipago">
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btnCompletarDatosTarjeta">
+                        
+                  </div> <!--Fin de metodosPago-->
+
+                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal" id="btnCompletarDatosTarjeta">
                           Completar datos de tarjeta
                         </button>
                     
-                    </div>
+                    
 
                                                   <!-- Modal tarjeta-->
                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -189,23 +219,7 @@
                             </div>
                           </div>
                         <!------- Fin del modal de la tarjeta ------->
-                    <div class="col-11 metodosPago" id="metodosDeEnvio">
-                      <legend>Método de envío:</legend>
-                      <div class="col-10 itemsPago">
-                          <div class="form-check ">
-                              <input class="form-check-input seleccionMetodosEnvio" type="radio" name="inlineRadioOptions" id="retirar" value="Retiro en local">
-                              <label class="form-check-label" for="inlineRadio1">
-                                Retirar gratis en nuestro local de la calle Timbúes.
-                              </label>
-                          </div>
-                          <div class="form-check ">
-                            <input class="form-check-input seleccionMetodosEnvio" type="radio" name="flexRadioDefault" id="envioDomicilio" value="Envío a domicilio" >
-                            <label class="form-check-label" for="flexRadioDefault2">
-                             Envío a domicilio GRATIS dentro del partido de Morón. Otras localidades: costo $450.
-                            </label>
-                          </div>                          
-                      </div>
-                  </div>
+
 
                     <div class="itemsPago">
                         <div class="form-check">
@@ -224,17 +238,17 @@
 
 <!-- MODAL  Resumen del pedido----------------------------------->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="btnEnviarPedido">
+<button type="button" class="col-2 offset-5 btn btn-outline-info btnEnviarPedido " data-toggle="modal" data-target=".bd-example-modal-lg" id="btnEnviarPedido">
   Enviar pedido
 </button>
 
-<!-- Modal  -->
+<!-- Modal  Resumen del pedido-->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Resumen del pedido</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title articulo" id="exampleModalLongTitle">Resumen del pedido</h5>
+        <button type="button" class="close btn-outline-info" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -278,7 +292,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnPagar">Pagar</button>
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal" id="btnPagar">Pagar</button>
       </div>
     </div>
   </div>

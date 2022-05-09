@@ -145,11 +145,16 @@ flex-wrap: wrap;
   border-radius: 5px;
   padding: 0.5rem;
   margin: 3rem auto; }
+  
 .contenedorCarrito{
   display:flex;
   flex-wrap: no-wrap;
 }
-
+.articulo{
+  color:rgb(11, 133, 133);
+  font-family: "Playball", serif;
+  font-size: 2.2rem;
+}
 #tituloPT{
   font-family: "Playball", serif;
   background-color: white;
@@ -166,9 +171,15 @@ width:10rem;
 }
 #btnRealizarPedido:hover{
   color:wheat;
+  width: 13rem;
 }
 #btnCompletarDatosTarjeta{
   display:none;
+}
+
+.btnEnviarPedido{
+color: rgb(11, 133, 133);
+margin: 1rem auto;
 }
 
 .sectionNosotros .tituloNosotros {
@@ -188,7 +199,14 @@ width:10rem;
   flex-wrap:wrap;
   justify-content: space-evenly;
 }
+.divImagen{
+  height:8rem;
+}
 .imgForm{
+  height:6rem;
+  margin:1rem 0;
+}
+.imgRapipago{
   height:5rem;
   margin:1rem 0;
 }
@@ -197,7 +215,11 @@ margin:1rem 0;
 }
 .metodosPago{
   margin:4rem 0;
-  
+}
+  .cardsMetodosPago{
+display: flex;
+justify-content: space-between;
+flex-wrap: nowrap;
 }
 .itemsPago{
 
@@ -207,6 +229,9 @@ margin:1rem 0;
 .form-check div{
   align-items:center;
   margin:0;
+}
+#politica{
+  font-style:italic;
 }
 #politica a:hover{
 color:rgb(11, 212, 179);
