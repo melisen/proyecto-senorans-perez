@@ -6,7 +6,7 @@ Aclaración: el "factor de corrección" tiene en cuenta el desperdicio para calc
 
 const arrayIngredientes = [];
 function recuperarIngredientes(){
-fetch("ingredientes.json")
+fetch("../json-local/ingredientes.json")
                         .then( (respuesta) => respuesta.json() )
                         .then( (data) => {
                             data.forEach(element =>{
@@ -27,25 +27,6 @@ fetch("ingredientes.json")
 }
 recuperarIngredientes();
 console.log(arrayIngredientes);
-
-//Guardar el array dentro de variable local data, y pasarle mis funciones dentro con data como parámetro.
-/*const recuperarConFetch = async () =>{
-    try{
-        const respuesta = await fetch("ingredientes.json");
-        const data = await respuesta.json();
-        mostrarIngred(data);
-        quePasaCuandoCheck(data);
-    } catch(error){
-        console.log(error)
-    }
-}
-recuperarConFetch();
-*/
-
-
-
-
-
 
 ///DOM:
 const ingredientesSeleccionar = document.querySelector(".ingredientesSeleccionar");
@@ -78,7 +59,7 @@ comensales.addEventListener("change",() =>{
     localStorage.setItem('cantidadPizzas', JSON.stringify(cantidadPizzas));
     //Es relevante llamar la atención al usuario sobre la importancia de completar este paso para poder seguir con el resto del proceso (brindar el dato para poder calcular cantidades). Se una un toast ya que no es necesario interrumpir el flujo de acciones del usuario (como sería por ejemplo con un alert).
     Toastify({
-        avatar: "images/oryza-logo.png",
+        avatar: "../images/oryza-logo.png",
         text: "Seleccionaste la cantidad de comensales, ¡Genial!",
         gravity: "top",
         position: "right",
@@ -112,7 +93,7 @@ const mostrarIngred = (arrayIngredientes) =>{
 /////Se agregan ingredientes de la masa al array pizzaCreada. Luego el usuario va agregando los ingredientes de la cubierta.
 const pizzaCreada = [];
 function agregarMasa(){
-    fetch("ingredientes-masa.json")
+    fetch("../json-local/ingredientes-masa.json")
                             .then( (respuesta) => respuesta.json() )
                             .then( (data) => {
                                 data.forEach(element =>{
@@ -131,7 +112,7 @@ function quePasaCuandoCheck(arrayIng){
             localStorage.setItem("ingredElegidoID",JSON.stringify(e.id))
             //Se inserta un toast para enfatizar que la acción de agregar un ingrediente por parte del usuario es importante para el proceso general de armar la pizza.
             Toastify({
-                avatar: "images/oryza-logo.png",
+                avatar: "../images/oryza-logo.png",
                 text: "¡Agregaste un nuevo ingrediente!",
                 gravity: "bottom",
                 position: "right",
@@ -191,14 +172,13 @@ function confirmacionSelecIngred(){
 function alertComensales(){
     //Utilizo la librería Sweet Alert ya que un alert resulta conveniente en este proceso porque se necesita llamar la atención sal usuario sobre la necesidad de realizar una acción previa (seleccionar número de comensales) a la de confirmar la selección de ingredientes, y se le solicita que la cumpla.
     swal.fire({
-        //icon:"info",
         title: "Te faltó decirnos para cuántos cocinarás",
         text: "Para poder calcular las cantidades de tu receta",
         confirmButtonText:"Ok",
         confirmButtonColor: "#1b8f72",
         backdrop: `
         rgba(31,95,79,0.37)
-        url("images/comensales.png")
+        url("../images/comensales.png")
         top
         no-repeat
     `
@@ -297,7 +277,7 @@ function mostrarProductos(arrayProductos){
 
 }
 
-//Confirmación de compra: muestra lista final de productos y precio total.
+//Confirmación de compra: muestra lista final de productos y la suma.
 function comprar(){
     btnConfirmarCompra.style.display="flex";
     btnConfirmarCompra.addEventListener("click", () =>{
@@ -336,7 +316,7 @@ const calcularTotal = () =>{
     let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
     precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
     
-    localStorage.setItem("total", JSON.stringify(total))
+    localStorage.setItem("total", JSON.stringify(total));
 }
 
 function recuperar() {

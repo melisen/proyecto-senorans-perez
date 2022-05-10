@@ -16,6 +16,8 @@ const rapipago = document.getElementById("rapipago");
 const transferencia = document.getElementById("transferencia");  
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");
+const btnCodigoPago = document.getElementById("btnCodigoPago");
+const btnTransferencia = document.getElementById("btnTransferencia");
 
 //DOM Modal Tarjeta:
 const numeroTarjeta = document.getElementById("numeroTarjeta");
@@ -26,7 +28,8 @@ const apellidoTitular = document.getElementById("apellidoTitular");
 const dniTitular = document.getElementById("dniTitular");
 
 //DOM para el MODAL Resumen de compra:
-const btnEnviarPedido = document.getElementById("btnEnviarPedido");
+const btnConfirmarPedido = document.getElementById("btnConfirmarPedido");
+const btnVerPedido = document.getElementById("btnVerPedido");
 const contenedorResumen = document.getElementById("contenedorResumen");
 const contSubtotal = document.getElementById("contSubtotal");
 const contMetodoPago = document.getElementById("contMetodoPago");
@@ -55,18 +58,29 @@ checkPago.forEach(valor =>{
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
                 btnCompletarDatosTarjeta.style.display= "block";
+                btnCodigoPago.style.display= "none";
+                btnTransferencia.style.display="none";
                 break;
             case 'transferencia':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
+                btnCodigoPago.style.display= "none"
+                btnCompletarDatosTarjeta.style.display= "none";
+                btnTransferencia.style.display="block";
                 break;
             case 'pagoFacil':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
+                btnCodigoPago.style.display= "block";
+                btnCompletarDatosTarjeta.style.display= "none";
+                btnTransferencia.style.display="none";
                 break;
             case 'rapipago':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
+                btnCodigoPago.style.display= "block";
+                btnCompletarDatosTarjeta.style.display= "none";
+                btnTransferencia.style.display="none";
                 break;
         
             default:
@@ -111,8 +125,34 @@ dirFacturacion.addEventListener("click", () =>{
     dirFacturacion.checked ?  formularioLS.push(dirFacturacion.value="true"):  formularioLS.push(dirFacturacion.value="false");
     console.log(formularioLS);
 })
+/*
+numeroTarjeta = document.getElementById("numeroTarjeta");
+const vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
+const codigoTarjeta = document.getElementById("codigoTarjeta");
+const nombreTitular = document.getElementById("nombreTitular");
+const apellidoTitular = document.getElementById("apellidoTitular");
+const dniTitular = document.getElementById("dniTitular");*/
+function rellenarTodosLosCampos(){
+    btnConfirmarPedido.addEventListener("click", () => {
+        if( (nombre.value=="" || apellido.value=="" || telefono.value=="" || dni.value=="" || direccion.value=="" || email.value=="" || localidad.value=="null" || metodoEnvioElegido==null || metodoPagoElegido==null) 
+        || ( (metodoPagoElegido=="tarjeta") && (vencimientoTarjeta.value=="" || codigoTarjeta.value=="" || nombreTitular.value=="" || apellidoTitular.value=="" || dniTitular.value=="")) ){
+            swal.fire({
+                title: `Falta completar campos`,
+                icon: "warning",
+                text:  `Es necesario completar todos los campos para confirmar el pedido`,
 
-btnEnviarPedido.addEventListener("click", () =>{
+                cancelButtonText: "Ok",
+                cancelButtonColor: "#aa8d67cc"
+            })
+        } else{
+        btnVerPedido.style.display="block";
+        }
+    })
+    
+}
+rellenarTodosLosCampos();
+    
+btnVerPedido.addEventListener("click", () =>{
     mostrarResumenCompra();
 })
 
@@ -169,7 +209,7 @@ function mostrarResumenCompra(){
 
 btnPagar.addEventListener("click", () => {
     Toastify({
-        avatar: "images/oryza-logo.png",
+        avatar: "../images/oryza-logo.png",
         text: "¡Muchas gracias por tu compra!",
         gravity: "bottom",
         position: "right",
