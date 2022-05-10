@@ -96,7 +96,10 @@ flex-wrap: wrap;
     height: 5rem;
     width: 5rem;
     margin-bottom: 10px; }
-
+    .fotoProducto{
+      max-height: 8rem;
+      margin-bottom: 10px;
+    }
 .toastCheckbox{
   background-color:  #a18152;
   color:white;

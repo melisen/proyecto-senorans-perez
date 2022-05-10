@@ -218,8 +218,8 @@ function mostrarProductos(arrayProductos){
     productosCarrito.appendChild(divCaja);
     divCaja.innerHTML = 
     `<div class=" card-carrito">
-        <img    src="${producto.foto}"
-                class=" card-img-top img-fluid"
+        <img    src="${producto.fotoProducto}"
+                class="fotoProducto"
                 alt="${producto.nombreIngred}"/>
         <h4>${producto.nombreIngred.toUpperCase()}</h4>
         <h4>${producto.marca}</h4>

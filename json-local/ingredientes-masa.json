@@ -7,7 +7,8 @@
     "factorCorreccion": 1,
     "GramosEnBolsa": 500,
     "precioXBolsa": 930,
-    "foto": "../images/ingred/olive-oil.png"
+    "foto": "../images/ingred/olive-oil.png",
+    "fotoProducto": "../images/productos/biolive.jpg"
 },
 {
     "id": 15,
@@ -27,7 +28,8 @@
     "factorCorreccion": 1,
     "GramosEnBolsa": 500,
     "precioXBolsa": 337,
-    "foto": "../images/ingred/flour.png"
+    "foto": "../images/ingred/flour.png",
+    "fotoProducto": "../images/productos/premezcla.jpg"
 },
 {
     "id": 17,
@@ -37,6 +39,7 @@
     "factorCorreccion": 1,
     "GramosEnBolsa": 500,
     "precioXBolsa": 80,
-    "foto": "../images/ingred/salt-shaker.png"
+    "foto": "../images/ingred/salt-shaker.png",
+    "fotoProducto": "../images/productos/sal-fina.jpg"
 }    
 ]

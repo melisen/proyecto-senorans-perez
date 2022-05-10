@@ -7,7 +7,9 @@
         "factorCorreccion": 2,
         "GramosEnBolsa": 80,
         "precioXBolsa": 150,
-        "foto": "../images/ingred/albahaca.png"
+        "foto": "../images/ingred/albahaca.png",
+        "fotoProducto": "../images/ingred/albahaca.png"
+
     },
     {
         "id": 2,
@@ -17,7 +19,8 @@
         "factorCorreccion": 2,
         "GramosEnBolsa": 800,
         "precioXBolsa": 520,
-        "foto": "../images/ingred/anana.png"
+        "foto": "../images/ingred/anana.png",
+        "fotoProducto": "../images/productos/anana.jpg"
     },
     {
         "id": 3,
@@ -27,7 +30,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 200,
         "precioXBolsa": 380,
-        "foto": "../images/ingred/mushroom.png"
+        "foto": "../images/ingred/mushroom.png",
+        "fotoProducto": "../images/ingred/mushroom.png"
     },
     {
         "id": 4,
@@ -37,7 +41,8 @@
         "factorCorreccion": 1.6,
         "GramosEnBolsa": 150,
         "precioXBolsa": 120,
-        "foto": "../images/ingred/spinach.png"
+        "foto": "../images/ingred/spinach.png",
+        "fotoProducto": "../images/ingred/spinach.png"
     },
     {
         "id": 5,
@@ -47,7 +52,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 130,
         "precioXBolsa": 368,
-        "foto": "../images/ingred/ham.png"
+        "foto": "../images/ingred/ham.png",
+        "fotoProducto": "../images/productos/jamon-cocido.jpeg"
     },
     {
         "id": 6,
@@ -57,7 +63,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 100,
         "precioXBolsa": 464,
-        "foto": "../images/ingred/jamon-crudo.png"
+        "foto": "../images/ingred/jamon-crudo.png",
+        "fotoProducto": "../images/productos/jamon-crudo.jpg"
     },
     {
         "id": 7,
@@ -67,7 +74,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 500,
         "precioXBolsa": 560,
-        "foto": "../images/ingred/mozzarella.png"
+        "foto": "../images/ingred/mozzarella.png",
+        "fotoProducto": "../images/productos/mozzarella.jpg"
     },
     {
         "id": 8,
@@ -77,7 +85,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 10,
         "precioXBolsa": 84,
-        "foto": "../images/ingred/oregano.png"
+        "foto": "../images/ingred/oregano.png",
+        "fotoProducto": "../images/productos/oregano.jpg"
     },
     {
         "id": 9,
@@ -87,7 +96,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 140,
         "precioXBolsa": 408,
-        "foto": "../images/ingred/queso-azul.png"
+        "foto": "../images/ingred/queso-azul.png",
+        "fotoProducto": "../images/productos/queso-azul.jfif"
     },
     {
         "id": 10,
@@ -97,7 +107,8 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 250,
         "precioXBolsa": 375,
-        "foto": "../images/ingred/cheese.png"
+        "foto": "../images/ingred/cheese.png",
+        "fotoProducto": "../images/productos/quesoSardo.jpg"
     },
     {
         "id": 11,
@@ -107,7 +118,8 @@
         "factorCorreccion": 1.6,
         "GramosEnBolsa": 150,
         "precioXBolsa": 120,
-        "foto": "../images/ingred/arugula.png"
+        "foto": "../images/ingred/arugula.png",
+        "fotoProducto": "../images/ingred/arugula.png"
     },
     {
         "id": 12,
@@ -117,7 +129,9 @@
         "factorCorreccion": 1.1,
         "GramosEnBolsa": 1000,
         "precioXBolsa": 220,
-        "foto": "../images/ingred/tomato.png"
+        "foto": "../images/ingred/tomato.png",
+        "fotoProducto": "../images/ingred/tomato.png"
+        
     },
     {
         "id": 13,
@@ -127,6 +141,7 @@
         "factorCorreccion": 1,
         "GramosEnBolsa": 50,
         "precioXBolsa": 125,
-        "foto": "../images/ingred/drying.png"
+        "foto": "../images/ingred/drying.png",
+        "fotoProducto": "../images/productos/tomates-secos.jpg"
     }
 ]
