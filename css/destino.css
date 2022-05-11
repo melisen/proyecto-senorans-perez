@@ -311,13 +311,19 @@ footer {
 #menuHamburguesa{
   display:flex;
 }
+#menuHamburguesa p {
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(42, 161, 161); }
 .dropdown{
   display:flex;
   justify-content: space-between;
 }
 
 /*Index*/
-
+.titulo-ppal{
+  font-size: 2.2rem;
+margin-bottom: 1rem;}
 
 /*Comprar*/
 .cardsMetodosPago{
@@ -360,6 +366,11 @@ footer {
   #menuHamburguesa{
     display:flex;
   }
+  #menuHamburguesa p {
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(42, 161, 161); }
+  menuHamburguesa p
   .dropdown{
     display:flex;
     justify-content: space-between;
