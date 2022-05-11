@@ -20,7 +20,7 @@
 </head>
 <body>
     <header class="container-fluid" id="header">
-          <nav class="navbar navbar-expand navbar-dark" >
+          <nav class="navbar navbar-expand navbar-dark" id="navbar" >
               <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                   <img src="../images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
@@ -46,6 +46,22 @@
                 </div>
               </div>
             </nav>
+
+            <!-- Menú hamburguesa Smartphone---------->
+            <div class="dropdown" id="menuHamburguesa">
+              <img src="../images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
+              <p>Oryza Tienda sin TACC</p>
+              <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../images/menu.png" width="30" height="30" alt="menu">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#pasos">Receta</a></li>
+                <li><a class="dropdown-item" href="#carrito">Carrito</a></li>
+                <li><a class="dropdown-item" href="#nosotros">Nosotros</a></li>
+              </ul>
+            </div>
+            <!-- Fin menu hamburguesa-------->
+
     </header>
     <div class="container-fluid ">
         <div class=" row text-center justify-content-center ">
@@ -123,23 +139,25 @@
             </div>
             <div class="col-10 productosCarrito"></div>
             <div class="col-10">
-              <button id="btnConfirmarCompra" class="col-auto btnComprar" >Confirmar compra</button>
+              <button id="btnConfirmarCompra" class="col-auto btnComprar" >Confirmar pedido</button>
             </div>
             <div class="col-10" >
-              <table class="table table-responsive" id="tabla">
-                <thead>
-                    <tr>
-                        <th class="articulo">Artículo</th>
-                        <th class="articulo">Marca</th>
-                        <th class="articulo">Contenido</th>
-                        <th class="articulo">Precio</th>
-                        <th class="articulo">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody id="contenedorCarrito">
-                  <!--Rellenado con la funcion mostrarCarrito-->
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table " id="tabla">
+                  <thead>
+                      <tr>
+                          <th class="articulo">Artículo</th>
+                          <th class="articulo">Marca</th>
+                          <th class="articulo">Contenido</th>
+                          <th class="articulo">Precio</th>
+                          <th class="articulo">Cantidad</th>
+                      </tr>
+                  </thead>
+                  <tbody id="contenedorCarrito">
+                    <!--Rellenado con la funcion mostrarCarritoFinal()-->
+                  </tbody>
+                </table>
+              </div>
 
             </div>
             <div class="col-10" id="precioTotal">

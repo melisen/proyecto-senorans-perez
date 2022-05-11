@@ -178,7 +178,7 @@ function alertComensales(){
         confirmButtonColor: "#1b8f72",
         backdrop: `
         rgba(31,95,79,0.37)
-        url("../images/comensales.png")
+        url("../images/cuantos-cocinaras.png")
         top
         no-repeat
     `
@@ -218,6 +218,7 @@ function mostrarProductos(arrayProductos){
     productosCarrito.appendChild(divCaja);
     divCaja.innerHTML = 
     `<div class=" card-carrito">
+
         <img    src="${producto.fotoProducto}"
                 class="fotoProducto"
                 alt="${producto.nombreIngred}"/>
@@ -299,7 +300,7 @@ function mostrarCarritoFinal() {
         productoEnCarrito.innerHTML=`
         <td>${el.nombreIngred.toUpperCase()}</td>
         <td>${el.marca}</td>
-        <td>${el.GramosEnBolsa}  g</td>
+        <td>${el.GramosEnBolsa}  g</td><br>
         <td>$${el.precioXBolsa} </td>
         <td>${el.cantidad}</td> `;                        
         contenedorCarrito.appendChild(productoEnCarrito);
@@ -314,7 +315,7 @@ function mostrarCarritoFinal() {
 const calcularTotal = () =>{
     // método reduce() para hacer una sumatoria, devuelve el resutado que lo guardamos en una variable total. El último parámetro, que está en 0, es desde dónde va a empezar a sumar
     let total = pizzaCreada.reduce((acc, elemento) => acc + (elemento.cantidad*elemento.precioXBolsa), 0);
-    precioTotal.innerHTML =`<h2 class="col-5 " id="tituloPT" > Total del pedido: $ ${total} </h2> `;
+    precioTotal.innerHTML =`<h2 class="col-10" id="tituloPT" > Total del pedido: <br> $ ${total} </h2> `;
     
     localStorage.setItem("total", JSON.stringify(total));
 }

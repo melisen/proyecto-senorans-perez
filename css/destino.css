@@ -5,7 +5,9 @@
   font-family: "Nunito", sans-serif;
   box-sizing: border-box; 
 }
-
+#menuHamburguesa{
+  display:none;
+}
 #tabla{
   display:none;
   margin: 4rem 0;
@@ -97,7 +99,7 @@ flex-wrap: wrap;
     width: 5rem;
     margin-bottom: 10px; }
     .fotoProducto{
-      max-height: 8rem;
+      max-height: 7rem;
       margin-bottom: 10px;
     }
 .toastCheckbox{
@@ -154,7 +156,7 @@ flex-wrap: wrap;
   
 .contenedorCarrito{
   display:flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
 }
 .articulo{
   color:rgb(11, 133, 133);
@@ -228,7 +230,6 @@ justify-content: space-between;
 flex-wrap: nowrap;
 }
 .itemsPago{
-
   display:flex;
   justify-content: space-evenly;
 }
@@ -294,3 +295,82 @@ footer {
     background-color: white;
     color: rgba(151, 110, 49, 0.822);
     text-align: center; }
+
+
+/******************************/
+/*MEDIA QUERY PARA SMARTPHONE*/
+/*Header*/
+@media (max-width: 480px) {
+#navbar{
+  display:none;
+}
+#menuHamburguesa{
+  display:flex;
+}
+.dropdown{
+  display:flex;
+  justify-content: space-between;
+}
+
+/*Index*/
+
+.articulo{
+font-size:1.2rem;
+}
+
+/*Comprar*/
+.cardsMetodosPago{
+  display: flex;
+  flex-wrap: wrap;
+}
+.metodoPagoNombre{
+  height:8rem;
+}
+.imgForm{
+  height:6rem;
+  margin:1rem 0;
+}
+.imgRapipago{
+  height:5rem;
+  margin:1rem 0;
+}
+
+/*Footer*/
+  footer ul li {
+    font-size:1rem;
+    line-height: 2rem;
+    
+  }
+  #subir {
+    margin: 20vh 0 10vh 0;
+  }
+
+}
+
+/******************************/
+/*MEDIA QUERY PARA Tablet*/
+/*Header*/
+@media  (min-width:481px) and (max-width:1024px){
+  #navbar{
+    display:none;
+  }
+  #menuHamburguesa{
+    display:flex;
+  }
+  .dropdown{
+    display:flex;
+    justify-content: space-between;
+  }
+  .cardsMetodosPago{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .imgForm{
+    height:6rem;
+    margin:1rem 0;
+  }
+  .imgRapipago{
+    height:5rem;
+    margin:1rem 0;
+  }
+}

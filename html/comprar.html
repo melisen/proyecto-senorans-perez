@@ -16,7 +16,7 @@
 <body>
 
     <header class="container-fluid" id="header">
-        <nav class="navbar navbar-expand navbar-dark" >
+        <nav class="navbar navbar-expand navbar-dark" id="navbar">
             <div class="container-fluid">
               <a class="navbar-brand" href="index.html">
                 <img src="../images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
@@ -36,6 +36,21 @@
               </div>
             </div>
           </nav>
+
+          <!-- Menú hamburguesa Smartphone---------->
+            <div class="dropdown" id="menuHamburguesa">
+              <img src="../images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
+              <p>Oryza Tienda sin TACC</p>
+              <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../images/menu.png" width="30" height="30" alt="menu">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#pasos">Receta</a></li>
+                <li><a class="dropdown-item" href="#carrito">Carrito</a></li>
+                <li><a class="dropdown-item" href="#nosotros">Nosotros</a></li>
+              </ul>
+            </div>
+            <!-- Fin menu hamburguesa-------->
   </header>
 
 <div class="container">
@@ -46,33 +61,33 @@
                     <div class="col-11" id="datosDeEnvio">
                         <legend class="articulo">Datos de envío:</legend>
                     
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                         
                             <label for="Nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control itemFormulario" placeholder="Nombre" id="nombre">
                         </div>
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="Apellido" class="form-label">Apellido</label>
                             <input type="text" class="form-control itemFormulario" placeholder="Apellido" id="apellido">
                         </div>
-                        <div class="itemForm col-5" >
+                        <div class="itemForm col-5-lg col-10-sm" >
                             <label for="InputEmail1" class="form-label">Dirección email</label>
                             <input type="email" class="form-control itemFormulario"  aria-describedby="emailHelp" id="email">
                             <div id="emailHelp" class="form-text">direccion@ejemplo.com</div>
                         </div>
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="dni" class="form-label">DNI</label>
                             <input type="number" class="form-control itemFormulario" placeholder="11.111.111" id="dni">
                         </div> 
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="direccion" class="form-label">Dirección </label>
                             <input type="text" class="form-control itemFormulario" placeholder="Calle n°" id="direccion">
                         </div>
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="piso" class="form-label">Piso / departamento </label>
                             <input type="text-area" class="form-control itemFormulario" placeholder=" - " id="piso">
                         </div>
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="localidad" class="form-label">Localidad</label>
                             <select class="form-select itemFormulario" aria-label="Default select example" id="localidad">
                                 <option selected>Localidad</option>
@@ -85,7 +100,7 @@
                             </select>
                             <div id="localidadEnvio" class="form-text">Envío Gratis dentro del partido de Morón</div>
                         </div>
-                        <div class="itemForm col-5">
+                        <div class="itemForm col-5-lg col-10-sm">
                             <label for="telefono" class="form-label">Teléfono</label>
                             <input type="number" class="form-control itemFormulario" placeholder="011-1111-1111" id="telefono">
                         </div>
@@ -112,7 +127,7 @@
                     <div class="col-12 metodosPago" id="metodosDePago">
                         <legend class="articulo">Método de pago:</legend>
                         <div class="cardsMetodosPago">
-                          <div class="card text-center itemsPago" style="width: 18rem;">
+                          <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
                                 <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjeta" value="tarjeta">
@@ -124,7 +139,7 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="card text-center itemsPago" style="width: 18rem;">
+                          <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
                                 <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="transferencia">
@@ -136,7 +151,7 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="card text-center itemsPago" style="width: 18rem;">
+                          <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
                                 <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="pagoFacil">
@@ -148,7 +163,7 @@
                               </li>
                             </ul>
                           </div>
-                          <div class="card text-center itemsPago" style="width: 18rem;">
+                          <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
                                 <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="rapipago">
@@ -313,14 +328,16 @@
     </div>
 
 
-    <button type="button" class="col-2 offset-5 btn btn-outline-info btnEnviarPedido " id="btnConfirmarPedido">
-      Confirmar pedido
-    </button>
-<!-- MODAL  Resumen del pedido----------------------------------->
-<!-- Button trigger modal -->
-<button type="button" class="col-2 offset-5 btn btn-outline-info btnEnviarPedido " data-toggle="modal" data-target=".bd-example-modal-lg" id="btnVerPedido">
-  Ver pedido
-</button>
+    <div class="row">
+      <button type="button" class="col-2-g col-5-lg col-5-sm btn btn-outline-info btnEnviarPedido " id="btnConfirmarPedido">
+        Confirmar pedido
+      </button>
+      <!-- MODAL  Resumen del pedido----------------------------------->
+      <!-- Button trigger modal -->
+      <button type="button" class="col-2-g col-5-lg col-5-sm btn btn-outline-info btnEnviarPedido " data-toggle="modal" data-target=".bd-example-modal-lg" id="btnVerPedido">
+        Ver pedido
+      </button>
+    </div>
 
 <!-- Modal  Resumen del pedido-->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -339,7 +356,6 @@
             <tr>
               <th scope="col">Resumen del pedido</th>
               <th scope="col">Marca</th>
-              <th scope="col">Contenido</th>
               <th scope="col">Precio u.</th>
               <th scope="col">Cantidad</th>
             </tr>
@@ -348,23 +364,23 @@
           </tbody>  
           <div>
             <tr class="table-active">
-              <th scope="col">Subtotal: </th>
+              <th scope="col" class="articulito">Subtotal: </th>
               <th scope="col" id="contSubtotal"></th>
             </tr>
             <tr class="table-active">
-              <th scope="col">Método de pago: </th>
+              <th scope="col" class="articulito">Método de pago: </th>
               <th scope="col" id="contMetodoPago"></th>
             </tr>
             <tr class="table-active">
-              <th scope="col">Tipo de Envío:  </th>
+              <th scope="col" class="articulito">Tipo de Envío:  </th>
               <th scope="col" id="contTipoEnvio"></th>
             </tr>
             <tr class="table-active">
-              <th scope="col">Costo de envío: </th>
+              <th scope="col" class="articulito">Costo de envío: </th>
               <th scope="col" id="contCostoEnvio"></th>
             </tr>
             <tr class="table-active">
-              <th scope="col">TOTAL DEL PEDIDO:  </th>
+              <th scope="col" class="articulito">TOTAL DEL PEDIDO:  </th>
               <th scope="col" id="contTotalPedido"></th>
             </tr>
           </div>
