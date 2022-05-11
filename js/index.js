@@ -300,7 +300,7 @@ function mostrarCarritoFinal() {
         productoEnCarrito.innerHTML=`
         <td>${el.nombreIngred.toUpperCase()}</td>
         <td>${el.marca}</td>
-        <td>${el.GramosEnBolsa}  g</td><br>
+        <td>${el.GramosEnBolsa}  g</td>
         <td>$${el.precioXBolsa} </td>
         <td>${el.cantidad}</td> `;                        
         contenedorCarrito.appendChild(productoEnCarrito);

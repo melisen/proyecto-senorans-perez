@@ -188,7 +188,8 @@ function mostrarResumenCompra(){
         productoEnResumen.innerHTML=`
         <th scope="row">${el.nombreIngred.toUpperCase()}</td>
         <td>${el.marca}</td>
-        <td>$${el.precioXBolsa} </td>
+        <td>${el.GramosEnBolsa} g</td>
+        <td>$${el.precioXBolsa}</td>
         <td>${el.cantidad}</td> `;                        
         contenedorResumen.appendChild(productoEnResumen);      
     })

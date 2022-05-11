@@ -12,6 +12,7 @@
   display:none;
   margin: 4rem 0;
   font-size:1.2rem;
+  overflow-x: auto;
 }
 
 
@@ -162,6 +163,9 @@ flex-wrap: wrap;
   color:rgb(11, 133, 133);
   font-family: "Playball", serif;
   font-size: 2.2rem;
+}
+.articulito{
+  color:rgb(11, 133, 133);
 }
 #tituloPT{
   font-family: "Playball", serif;
@@ -318,6 +322,7 @@ footer {
 font-size:1.2rem;
 }
 
+
 /*Comprar*/
 .cardsMetodosPago{
   display: flex;
@@ -344,7 +349,9 @@ font-size:1.2rem;
   #subir {
     margin: 20vh 0 10vh 0;
   }
-
+.copyright p{
+  line-height: 2rem;
+}
 }
 
 /******************************/
