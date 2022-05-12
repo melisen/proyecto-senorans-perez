@@ -16,7 +16,7 @@
 }
 
 
-header .navbar {
+#navbar {
   width: 100%;
   padding:0;
   margin:0;
@@ -191,7 +191,9 @@ width:10rem;
 #btnCompletarDatosTarjeta{
   display:none;
 }
-
+.dirFacturacionEstilo{
+  margin: 0.8rem 0;
+}
 .btnEnviarPedido{
 color: rgb(11, 133, 133);
 margin: 1rem auto;
@@ -263,7 +265,8 @@ color:rgb(11, 212, 179);
 footer {
   background-color: rgb(247, 236, 222);
   line-height: 6vh;
-  padding-top: 2rem; }
+  padding-top: 2rem; 
+margin-top: 2rem;}
   footer .redesFooter {
     margin-bottom: 3vh; }
     footer .redesFooter a {
@@ -313,20 +316,26 @@ footer {
 }
 #menuHamburguesa{
   display:flex;
+  align-content: center;
+  background-color: rgb(42, 161, 161);
 }
 #menuHamburguesa p {
   text-align: center;
-  font-size: 1rem;
-  color: rgb(42, 161, 161); }
-.dropdown{
-  display:flex;
-  justify-content: space-between;
-}
+  font-size: 1.1rem;
+  color: white; 
+margin-top:0.5rem;}
+
 
 /*Index*/
 .titulo-ppal{
   font-size: 2.2rem;
 margin-bottom: 1rem;}
+.ingredientesSeleccionar, .cantidadesReceta, .productosCarrito{
+  justify-content: center;
+}
+.card-seleccionar, .card-body-receta, .card-carrito{
+  margin: 1rem 0;
+}
 
 /*Comprar*/
 .cardsMetodosPago{
@@ -363,21 +372,22 @@ margin-bottom: 1rem;}
 /*MEDIA QUERY PARA Tablet*/
 /*Header*/
 @media  (min-width:481px) and (max-width:1024px){
+
   #navbar{
     display:none;
   }
   #menuHamburguesa{
     display:flex;
+    align-content: center;
+    background-color: rgb(42, 161, 161);
   }
   #menuHamburguesa p {
     text-align: center;
-    font-size: 1rem;
-    color: rgb(42, 161, 161); }
-  menuHamburguesa p
-  .dropdown{
-    display:flex;
-    justify-content: space-between;
-  }
+    font-size: 1.1rem;
+    color: white; 
+  margin-top:0.5rem;}
+
+  /*Index*/
   .cardsMetodosPago{
     display: flex;
     flex-wrap: wrap;

@@ -18,9 +18,10 @@
     <header class="container-fluid" id="header">
         <nav class="navbar navbar-expand navbar-dark" id="navbar">
             <div class="container-fluid">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="index.html" >
                 <img src="images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
-                Oryza Tienda sin TACC</a>
+                Oryza Tienda sin TACC
+              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -38,18 +39,22 @@
           </nav>
 
           <!-- Menú hamburguesa Smartphone---------->
-            <div class="dropdown" id="menuHamburguesa">
-              <img src="images/oryza-logo.png" width="30" height="30" alt="logo Oryza">
-              <p>Oryza Tienda sin TACC</p>
-              <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="images/menu.png" width="30" height="30" alt="menu">
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#pasos">Receta</a></li>
-                <li><a class="dropdown-item" href="#carrito">Carrito</a></li>
-                <li><a class="dropdown-item" href="#nosotros">Nosotros</a></li>
-              </ul>
-            </div>
+          <nav class="navbar navbar-expand navbar-dark" id="menuHamburguesa">
+            <div class="container-fluid">
+              <img src="images/oryza-logo-chico.png" width="30" height="30" alt="logo Oryza">
+              <p >Oryza Tienda sin TACC</p>
+              <div class="dropdown" >
+                <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="images/menu.png" width="30" height="30" alt="menu">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#pasos">Receta</a></li>
+                  <li><a class="dropdown-item" href="#carrito">Carrito</a></li>
+                  <li><a class="dropdown-item" href="#nosotros">Nosotros</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
             <!-- Fin menu hamburguesa-------->
   </header>
 
@@ -190,7 +195,9 @@
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Pago con tarjeta</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">
+                                    <img src="images/oryza-logo-chico.png" alt="logo Oryza">
+                                    Datos de tarjeta</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -240,7 +247,9 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title">Código de pago</h5>
+                                <h5 class="modal-title"> 
+                                  <img src="images/oryza-logo-chico.png" alt="logo Oryza">
+                                  Código de pago</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
@@ -280,7 +289,9 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Datos para transferencia</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="images/oryza-logo-chico.png" alt="logo Oryza">
+                            Datos para transferencia</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -309,15 +320,15 @@
                   </div>
         <!-- Fin del modal transferencia  ------->
 
-                    <div class="itemsPago">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="dirFacturacion" checked>
+                    <div class="itemsPago ">
+                        <div class="form-check dirFacturacionEstilo">
+                            <input class="form-check-input " type="checkbox" value="" id="dirFacturacion" checked>
                             <label class="form-check-label" for="flexCheckChecked">
                               Mi dirección de facturación y envío son las mismas.
                             </label>
                           </div>
                     </div>
-                    <div id="politica" class="form-text">Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a  >política de privacidad</a>.
+                    <div id="politica" class="form-text dirFacturacionEstilo">Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a  >política de privacidad</a>.
                     </div>
                 </fieldset>
             </form>

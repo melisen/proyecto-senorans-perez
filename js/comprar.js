@@ -138,9 +138,8 @@ function rellenarTodosLosCampos(){
         || ( (metodoPagoElegido=="tarjeta") && (vencimientoTarjeta.value=="" || codigoTarjeta.value=="" || nombreTitular.value=="" || apellidoTitular.value=="" || dniTitular.value=="")) ){
             swal.fire({
                 title: `Falta completar campos`,
-                icon: "warning",
+                imageUrl:("../images/oryza-logo-chico.png"),
                 text:  `Es necesario completar todos los campos para confirmar el pedido`,
-
                 cancelButtonText: "Ok",
                 cancelButtonColor: "#aa8d67cc"
             })
