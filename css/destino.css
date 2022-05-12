@@ -190,6 +190,7 @@ width:10rem;
 }
 #btnCompletarDatosTarjeta{
   display:none;
+  margin: 1rem auto;
 }
 .dirFacturacionEstilo{
   margin: 0.8rem 0;
@@ -330,6 +331,8 @@ margin-top:0.5rem;}
 .titulo-ppal{
   font-size: 2.2rem;
 margin-bottom: 1rem;}
+.descripcion, .procedimiento{
+  font-size:1rem;}
 .ingredientesSeleccionar, .cantidadesReceta, .productosCarrito{
   justify-content: center;
 }

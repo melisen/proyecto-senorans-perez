@@ -194,7 +194,7 @@ function mostrarCantidadesReceta (arrayReceta){
     cajaCantidadesReceta.className ="cajaCantidadesReceta";
     cantidadesReceta.appendChild(cajaCantidadesReceta);
     cajaCantidadesReceta.innerHTML= 
-        `<div class="  card-body-receta">
+        `<div class="card-body-receta">
             <img    src="${ingred.foto}"
                     class=" card-img-top img-fluid"
                     alt="${ingred.nombreIngred}"/>

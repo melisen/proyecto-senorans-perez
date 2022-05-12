@@ -141,7 +141,7 @@ function rellenarTodosLosCampos(){
                 imageUrl:("../images/oryza-logo-chico.png"),
                 text:  `Es necesario completar todos los campos para confirmar el pedido`,
                 cancelButtonText: "Ok",
-                cancelButtonColor: "#aa8d67cc"
+                cancelButtonColor: "#0B8585"
             })
         } else{
         btnVerPedido.style.display="block";
