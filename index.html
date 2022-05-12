@@ -51,19 +51,22 @@
             <!-- Menú hamburguesa Smartphone---------->
             <nav class="navbar navbar-expand navbar-dark" id="menuHamburguesa">
               <div class="container-fluid">
-                <img src="images/oryza-logo-chico.png" width="30" height="30" alt="logo Oryza">
-                <p >Oryza Tienda sin TACC</p>
-                <div class="dropdown" >
-                  <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="images/menu.png" width="30" height="30" alt="menu">
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#pasos">Receta</a></li>
-                    <li><a class="dropdown-item" href="#carrito">Carrito</a></li>
-                    <li><a class="dropdown-item" href="#nosotros">Nosotros</a></li>
-                  </ul>
-                </div>
-                </div>
+                  <a href="index.html">
+                    <img src="images/oryza-logo-chico.png" width="40" height="40" alt="logo Oryza">
+                  </a>
+                  <p >Oryza Tienda sin TACC</p>
+                  <div class="dropdown show">
+                    <a class="btn btn-outline-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="images/menu.png" id="logoHamburguesa" alt="logo Oryza">
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item descripcion" href="#pasos">Receta</a>
+                      <a class="dropdown-item descripcion" href="#carrito">Carrito</a>
+                      <a class="dropdown-item descripcion" href="#nosotros">Nosotros</a>
+                    </div>
+                  </div>
+              </div>
               </nav>
             <!-- Fin menu hamburguesa-------->
 

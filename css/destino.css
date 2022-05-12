@@ -325,7 +325,9 @@ margin-top: 2rem;}
   font-size: 1.1rem;
   color: white; 
 margin-top:0.5rem;}
-
+#logoHamburguesa{
+  height:30px;
+}
 
 /*Index*/
 .titulo-ppal{
