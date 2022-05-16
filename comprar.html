@@ -12,6 +12,7 @@
     <title>Oryza Tienda sin Tacc</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Square+Peg&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Playball&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -142,7 +143,7 @@
                           <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjeta" value="tarjeta">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjetaCredito" value="tarjetaCredito">
                                 <label class="form-check-label" for="inlineRadio1">
                                 Tarjeta de débito o crédito
                               </label>
@@ -228,7 +229,7 @@
                                     <div class="flexbox">
                                         <div class="grupo" id="nombre">
                                             <p class="label">Nombre tarjeta</p>
-                                            <p class="nombre"><!-- Rellenado con JS--></p>
+                                            <p ><span class="nombre"><!-- Rellenado con JS--></span> <span class="apellido"><!-- Rellenado con JS--></span></p>
                                         </div>
                                         <div class="grupo" >
                                             <p class="label">Expiracion</p>
@@ -240,9 +241,10 @@
                             <div class="trasera">
                                 <div class="barra-magnetica"></div>
                                 <div class="datos">
-                                    <div class="grupo" id="firma">
+                                    <div class="grupo" id="firmaBarra">
                                         <p class="label">Firma</p>
-                                        <div class="firma"><p></p></div>
+                                        <div class="firma" ><p> <span id="firmaNombre"></span> <span  id="firmaApellido"></span> </p>
+                                        </div>
                                     </div>
                                     <div class="grupo" >
                                         <p class="label">CCV</p>
@@ -299,12 +301,10 @@
 
                               <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-info" data-dismiss="modal">Completado</button>
-                                                                    </div> <!--Fin modal-footer-->
-                                                                  </div> <!--Fin modal content-->
-                                                                </div> <!-- Fin modal-dialog-->
-                                                              </div> <!--Fin modal fade-->
-                        
-                          
+                              </div> <!--Fin modal-footer-->
+                            </div> <!--Fin modal content-->
+                          </div> <!-- Fin modal-dialog-->
+                        </div> <!--Fin modal fade-->
                         <!------- Fin del modal de la tarjeta ------->
 
                         <!------ Modal rapipago y pago fácil ------------>
@@ -344,9 +344,6 @@
                             </div>
                           </div>
                         </div>
-
-
-
                         <!-- Fin del modal rapipago y pago fácil ------>
 
                         <!-- Modal Transferencia -->
