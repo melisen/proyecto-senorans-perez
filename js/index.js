@@ -1,6 +1,25 @@
 /*Objetivos: calcular la cantidad en gramos que necesito de cada ingrediente para preparar una receta para la cantidad de comensales (pizza individual) que ingrese e usuario, y calcular el costo de ingredientes y el costo final.
 Aclaración: el "factor de corrección" tiene en cuenta el desperdicio para calcular la cantidad de compra de un ingrediente y tener mejor control de gastos. Por ejemplo, el factor de Corrección de la Harina es 1 porque no tiene desperdicio, mientras que el factor de la naranja para jugo es 2 porque el 50% de una naranja aproximadamente es desperdicio cuando se compra naranja para hacer jugo. O sea si necesito 50g de jugo (es el peso Neto para mi receta), necesito comprar 100g de naranjas (peso Bruto).*/
 
+///DOM:
+const ingredientesSeleccionar = document.querySelector(".ingredientesSeleccionar");
+const comensales = document.querySelector("#comensales");
+const cantidadesReceta = document.querySelector(".cantidadesReceta");
+const productosCarrito = document.querySelector(".productosCarrito");
+const btnConfirmarCompra = document.querySelector("#btnConfirmarCompra");
+const contenedorCarrito = document.getElementById('contenedorCarrito');
+const tituloPrecioTotal = document.getElementById('tituloPrecioTotal');
+const precioTotal = document.getElementById('precioTotal');
+const tabla = document.getElementById('tabla');
+
+//Rellenar select comensales:
+for(let i = 1; i<13; i++){
+    let opcion = document.createElement("option");
+    opcion.value = i;
+    opcion.innerText=i;
+    comensales.appendChild(opcion);
+}
+
 
 //Intento guardar el array convertido desde el json en una variable global arrayIngredientes
 
@@ -28,16 +47,7 @@ fetch("../json-local/ingredientes.json")
 recuperarIngredientes();
 console.log(arrayIngredientes);
 
-///DOM:
-const ingredientesSeleccionar = document.querySelector(".ingredientesSeleccionar");
-const comensales = document.querySelector("#comensales");
-const cantidadesReceta = document.querySelector(".cantidadesReceta");
-const productosCarrito = document.querySelector(".productosCarrito");
-const btnConfirmarCompra = document.querySelector("#btnConfirmarCompra");
-const contenedorCarrito = document.getElementById('contenedorCarrito');
-const tituloPrecioTotal = document.getElementById('tituloPrecioTotal');
-const precioTotal = document.getElementById('precioTotal');
-const tabla = document.getElementById('tabla');
+
 
 
 
