@@ -75,7 +75,6 @@
                         <legend class="articulo">Datos de envío:</legend>
                     
                         <div class="itemForm col-6-lg col-10-sm">
-                        
                             <label for="Nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control itemFormulario" placeholder="Nombre" id="nombre">
                         </div>
@@ -118,7 +117,7 @@
                             <input type="number" class="form-control itemFormulario" placeholder="01111111111" id="telefono" maxlength="11">
                         </div>
                     </div>
-                    
+                    <!-- Elegir método de envío-->
                     <div class="col-11 metodosPago" id="metodosDeEnvio">
                       <legend class="articulo">Método de envío:</legend>
                       <div class="col-10 itemsPago">
@@ -136,14 +135,16 @@
                           </div>                          
                       </div>
                   </div>
+                    <!--Fin de métodos de envío-->
 
+                    <!--Elegir método de pago-->
                     <div class="col-12 metodosPago" id="metodosDePago">
                         <legend class="articulo">Método de pago:</legend>
                         <div class="cardsMetodosPago">
                           <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjetaCredito" value="tarjetaCredito">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="tarjetaCredito" value="Tarjeta">
                                 <label class="form-check-label" for="inlineRadio1">
                                 Tarjeta de débito o crédito
                               </label>
@@ -155,7 +156,7 @@
                           <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="transferencia">
+                                <input class="form-check-inpu seleccionMetodosPago" type="radio" name="flexRadioDefault" id="transferencia" value="Transferencia">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                  Transferencia (25% off)
                                 </label>
@@ -167,7 +168,7 @@
                           <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="pagoFacil">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="flexRadioDefault" id="pagoFacil" value="Pago Fácil">
                                 <label class="form-check-label" for="flexRadioDefault4">
                                  Pago Fácil
                                 </label>
@@ -179,7 +180,7 @@
                           <div class="card text-center itemsPago col-5-md col-10-sm" style="width: 18rem;">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">
-                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="rapipago">
+                                <input class="form-check-input seleccionMetodosPago" type="radio" name="inlineRadioOptions" id="rapipago" value="Rapipago">
                                   <label class="form-check-label" for="inlineRadio2">
                                     Rapipago
                                   </label>
@@ -192,16 +193,21 @@
                         
                   </div> <!--Fin de metodosPago-->
 
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal" id="btnCompletarDatosTarjeta">
+                  <!--------Botones aparecen según método de pago elegido----->
+                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalParaTarjeta" id="btnCompletarDatosTarjeta">
                           Completar datos de tarjeta
                         </button>
+                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalTransferencia" id="btnTransferencia">
+                          Ver datos para transferencia
+                        </button>
+                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalRapipagoPagoFacil" id="btnCodigoPago">
+                          Ver código de pago
+                        </button>
+                        <!--Fin botones-->
                     
-                    
-
-                                                  <!-- Modal tarjeta-->
-
-
-                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Modal tarjeta-->
+                        
+                          <div class="modal fade" id="modalParaTarjeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -251,7 +257,7 @@
                                         <p class="ccv" id="ccv"></p>
                                     </div>
                                 </div>
-                                <p class="leyenda">Leyenda</p>
+                                <p class="leyenda">Tu Banco</p>
                                 <a href="#" class="link-banco">www.tu-banco-com</a>
                             </div>
                         </section>
@@ -308,28 +314,23 @@
                         <!------- Fin del modal de la tarjeta ------->
 
                         <!------ Modal rapipago y pago fácil ------------>
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalRapipagoPagoFacil" id="btnCodigoPago">
-                          Ver código de pago
-                        </button>
-
-                        <div class="modal" tabindex="-1" id="modalRapipagoPagoFacil">
+                        <div class="modal" tabindex="-1" id="modalRapipagoPagoFacil" >
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title"> 
                                   <img src="images/oryza-logo-chico.png" alt="logo Oryza">
                                   Código de pago</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
                                 <div class="card text-center itemsPago" style="width: 18rem;">
                                   <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                       <div>18805 55956</div>
+                                    </li>
+                                    <li class="list-group-item">
+                                      <p>Muestra este código de pago al cajero en:</p>
                                   </li>
-                                  <li class="list-group-item">
-                                    <p>Muestra este código de pago al cajero en:</p>
-                                </li>
                                     <li class="list-group-item">
                                       <img src="images/rapipago.png" alt="Pago Fácil" class="imgRapipago">
                                           <img src="images/pagofacil.png" alt="Pago Fácil" class="imgForm">
@@ -347,10 +348,6 @@
                         <!-- Fin del modal rapipago y pago fácil ------>
 
                         <!-- Modal Transferencia -->
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalTransferencia" id="btnTransferencia">
-                          Ver datos para transferencia
-                        </button>
-
                   <div class="modal fade" id="modalTransferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -358,7 +355,6 @@
                           <h5 class="modal-title" id="exampleModalLabel">
                             <img src="images/oryza-logo-chico.png" alt="logo Oryza">
                             Datos para transferencia</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <div class="card text-center itemsPago" style="width: 18rem;">
@@ -386,6 +382,7 @@
                   </div>
         <!-- Fin del modal transferencia  ------->
 
+        <!-- Dirección de facturación-->
                     <div class="itemsPago ">
                         <div class="form-check dirFacturacionEstilo">
                             <input class="form-check-input " type="checkbox" value="" id="dirFacturacion" checked>
@@ -406,12 +403,13 @@
       <button type="button" class="col-2-g col-5-lg col-5-sm btn btn-outline-info btnEnviarPedido " id="btnConfirmarPedido">
         Confirmar pedido
       </button>
-      <!-- MODAL  Resumen del pedido----------------------------------->
-      <!-- Button trigger modal -->
+
+      <!-- Botón que aparece si la validación de btnConfirmarPedido es true -->
       <button type="button" class="col-2-g col-5-lg col-5-sm btn btn-outline-info btnEnviarPedido " data-toggle="modal" data-target=".bd-example-modal-lg" id="btnVerPedido">
         Ver pedido
       </button>
     </div>
+
 
 <!-- Modal  Resumen del pedido-->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -419,9 +417,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title articulo" id="exampleModalLongTitle">Resumen del pedido</h5>
-        <button type="button" class="close btn-outline-info" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body"> 
 
@@ -477,7 +472,7 @@
 
  
 
-</div>
+</div> <!-- Fin de div.container -->
 
 
 

@@ -18,6 +18,7 @@ const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");
 const btnCodigoPago = document.getElementById("btnCodigoPago");
 const btnTransferencia = document.getElementById("btnTransferencia");
+const btnCompletarDatosTarjeta = document.getElementById("btnCompletarDatosTarjeta");
 
 //Dom tarjeta animada:
 const tarjeta = document.querySelector("#tarjeta");
@@ -48,7 +49,6 @@ const btnVerPedido = document.getElementById("btnVerPedido");
 const contenedorResumen = document.getElementById("contenedorResumen");
 const contSubtotal = document.getElementById("contSubtotal");
 const contMetodoPago = document.getElementById("contMetodoPago");
-const btnCompletarDatosTarjeta = document.getElementById("btnCompletarDatosTarjeta");
 const contTipoEnvio = document.getElementById("contTipoEnvio");
 const contCostoEnvio = document.getElementById("contCostoEnvio");
 const contTotalPedido = document.getElementById("contTotalPedido");
@@ -72,7 +72,7 @@ apellido.addEventListener("keyup", (e) =>{
                     .replace(/[0-9]/g, "");  // no se pueda poner números
 });
 
-// Input DNI:
+// Input DNI validación:
 dni.addEventListener("keyup", (e) =>{
     let valorDNI =  e.target.value;
     dni.value = valorDNI
@@ -87,44 +87,42 @@ dni.addEventListener("keyup", (e) =>{
 let localidadElegida;
 localidad.addEventListener("change", () =>{
     localidadElegida = parseInt(localidad.value);
-})
+});
 
 // Seleccionar medio de pago:
-let checkPago = metodosDePago.querySelectorAll('[type=radio]')
+let checkPago = metodosDePago.querySelectorAll('[type=radio]');
 let metodoPagoElegido;
 checkPago.forEach(valor =>{
-    
     valor.addEventListener('click',()=>{
         switch (valor.value) {
-            case 'tarjetaCredito':
+            case 'Tarjeta':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
                 btnCompletarDatosTarjeta.style.display= "block";
                 btnCodigoPago.style.display= "none";
                 btnTransferencia.style.display="none";
                 break;
-            case 'transferencia':
+            case 'Transferencia':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
-                btnCodigoPago.style.display= "none"
-                btnCompletarDatosTarjeta.style.display= "none";
                 btnTransferencia.style.display="block";
+                btnCodigoPago.style.display= "none";
+                btnCompletarDatosTarjeta.style.display= "none";
                 break;
-            case 'pagoFacil':
+            case 'Pago Fácil':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
                 btnCodigoPago.style.display= "block";
                 btnCompletarDatosTarjeta.style.display= "none";
                 btnTransferencia.style.display="none";
                 break;
-            case 'rapipago':
+            case 'Rapipago':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
                 btnCodigoPago.style.display= "block";
                 btnCompletarDatosTarjeta.style.display= "none";
                 btnTransferencia.style.display="none";
                 break;
-        
             default:
                 console.log('no hubo seleccion');
                 localStorage.setItem('nada', 'no hubo seleccion')
@@ -132,7 +130,7 @@ checkPago.forEach(valor =>{
         }
         console.log(valor.checked, valor.value);
         metodoPagoElegido=valor.value;
-        console.log(metodoPagoElegido)
+        console.log(metodoPagoElegido);
     })
 });
 
@@ -321,7 +319,7 @@ dirFacturacion.addEventListener("click", () =>{
 function rellenarTodosLosCampos(){
     btnConfirmarPedido.addEventListener("click", () => {
         if( (nombre.value=="" || apellido.value=="" || telefono.value=="" || dni.value=="" || direccion.value=="" || email.value=="" || localidad.value=="null" || metodoEnvioElegido==null || metodoPagoElegido==null) 
-        || ( (metodoPagoElegido=="tarjeta") && (vencimientoTarjeta.value=="" || codigoTarjeta.value=="" || nombreTitular.value=="" || apellidoTitular.value=="" || dniTitular.value=="")) ){
+        || ( (metodoPagoElegido=="Tarjeta") && (selectMes.value=="" || selectYear.value=="" || inputCCV.value=="" || inputNombre.value=="" || inputApellido.value=="" || dniTitular.value=="")) ){
             swal.fire({
                 title: `Falta completar campos`,
                 imageUrl:("../images/oryza-logo-chico.png"),
@@ -454,11 +452,13 @@ guardarDatosLS(telefono, telefonoUsuario, telefonoLS);
 
 let metodoPagoUsuario;
 let metodoPagoLS="metodoPagoLS";
-guardarDatosLS(metodoPago, metodoPagoUsuario, metodoPagoLS);
+guardarDatosLS(metodoPagoElegido, metodoPagoUsuario, metodoPagoLS);
 
 let metodoEnvioUsuario;
 let metodoEnvioLS="metodoEnvioLS";
-guardarDatosLS(metodoEnvio, metodoEnvioUsuario, metodoEnvioLS);
+guardarDatosLS(metodoEnvioElegido, metodoEnvioUsuario, metodoEnvioLS);
+
+/////En caso de elegir tarjeta:
 
 let numeroTarjetaUsuario;
 let numeroTarjetaLS = "numeroTarjetaLS";
@@ -466,19 +466,23 @@ guardarDatosLS(numeroTarjeta, numeroTarjetaUsuario, numeroTarjetaLS);
 
 let codigoTarjetaUsuario;
 let codigoTarjetaLS="codigoTarjetaLS";
-guardarDatosLS(codigoTarjeta, codigoTarjetaUsuario, codigoTarjetaLS);
+guardarDatosLS(inputCCV, codigoTarjetaUsuario, codigoTarjetaLS);
 
-let vencimientoTarjetaUsuario;
-let vencimientoTarjetaLS="vencimientoTarjetaLS";
-guardarDatosLS(vencimientoTarjeta, vencimientoTarjetaUsuario, vencimientoTarjetaLS);
+let vencimientoTarjetaMesUsuario;
+let vencimientoTarjetaMesLS="vencimientoTarjetaLS";
+guardarDatosLS(selectMes, vencimientoTarjetaMesUsuario, vencimientoTarjetaMesLS);
+
+let vencimientoTarjetaYearUsuario;
+let vencimientoTarjetaYearLS="vencimientoTarjetaLS";
+guardarDatosLS(selectYear, vencimientoTarjetaYearUsuario, vencimientoTarjetaYearLS);
 
 let nombreTitularUsuario;
 let nombreTitularLS="nombreTitularLS";
-guardarDatosLS(nombreTitular, nombreTitularUsuario, nombreTitularLS);
+guardarDatosLS(inputNombre, nombreTitularUsuario, nombreTitularLS);
 
 let apellidoTitularUsuario;
 let apellidoTitularLS="apellidoTitularLS";
-guardarDatosLS(apellidoTitular, apellidoTitularUsuario, apellidoTitularLS);
+guardarDatosLS(inputApellido, apellidoTitularUsuario, apellidoTitularLS);
 
 let dniTitularUsuario;
 let dniTitularLS="dniTitularLS";

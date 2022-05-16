@@ -247,6 +247,9 @@ flex-wrap: nowrap;
   display:flex;
   justify-content: space-evenly;
 }
+#btnCompletarDatosTarjeta{
+  display: none;
+}
 #btnCodigoPago{
   display:none;
 }
