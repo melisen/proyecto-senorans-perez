@@ -19,13 +19,7 @@ const retirar = document.getElementById("retirar");
 const btnCodigoPago = document.getElementById("btnCodigoPago");
 const btnTransferencia = document.getElementById("btnTransferencia");
 
-//DOM Modal Tarjeta:
-const numeroTarjeta = document.getElementById("numeroTarjeta");
-const vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
-const codigoTarjeta = document.getElementById("codigoTarjeta");
-const nombreTitular = document.getElementById("nombreTitular");
-const apellidoTitular = document.getElementById("apellidoTitular");
-const dniTitular = document.getElementById("dniTitular");
+
 
 //DOM para el MODAL Resumen de compra:
 const btnConfirmarPedido = document.getElementById("btnConfirmarPedido");
@@ -41,6 +35,33 @@ const btnPagar = document.getElementById("btnPagar");
 
 
 /////// Rellenar formulario:
+//Input nombre:
+nombre.addEventListener("keyup", (e) =>{
+    let valorNombre =  e.target.value;
+    nombre.value = valorNombre
+                    .toUpperCase() //mayúsculas
+                    .replace(/[0-9]/g, "");  // no se pueda poner números
+});
+
+//Input apellido:
+apellido.addEventListener("keyup", (e) =>{
+    let valorApellido =  e.target.value;
+    apellido.value = valorApellido
+                    .toUpperCase() //mayúsculas
+                    .replace(/[0-9]/g, "");  // no se pueda poner números
+                });
+
+// Input DNI:
+dni.addEventListener("keyup", (e) =>{
+    let valorDNI =  e.target.value;
+    dni.value = valorDNI
+    .replace(/\s/g, "")  //Elimina espacios en blanco
+    .replace(/\D/g, "")  //Elimina todas las letras
+                    
+});
+
+
+
 
 let localidadElegida;
 localidad.addEventListener("change", () =>{
@@ -125,13 +146,7 @@ dirFacturacion.addEventListener("click", () =>{
     dirFacturacion.checked ?  formularioLS.push(dirFacturacion.value="true"):  formularioLS.push(dirFacturacion.value="false");
     console.log(formularioLS);
 })
-/*
-numeroTarjeta = document.getElementById("numeroTarjeta");
-const vencimientoTarjeta = document.getElementById("vencimientoTarjeta");
-const codigoTarjeta = document.getElementById("codigoTarjeta");
-const nombreTitular = document.getElementById("nombreTitular");
-const apellidoTitular = document.getElementById("apellidoTitular");
-const dniTitular = document.getElementById("dniTitular");*/
+
 function rellenarTodosLosCampos(){
     btnConfirmarPedido.addEventListener("click", () => {
         if( (nombre.value=="" || apellido.value=="" || telefono.value=="" || dni.value=="" || direccion.value=="" || email.value=="" || localidad.value=="null" || metodoEnvioElegido==null || metodoPagoElegido==null) 
