@@ -88,12 +88,37 @@ telefono.addEventListener("keyup", (e) =>{
     .replace(/\D/g, "")  //Elimina todas las letras
 });
 
-
-
-
+//Localidad:
 let localidadElegida;
 localidad.addEventListener("change", () =>{
     localidadElegida = parseInt(localidad.value);
+});
+
+//Seleccionar medio de envío:
+let checkEnvio = metodosDeEnvio.querySelectorAll('[type=radio]');
+let metodoEnvioElegido;
+checkEnvio.forEach(valor =>{
+    
+    valor.addEventListener('click',()=>{
+        switch (valor.value) {
+            case 'Retiro en local':
+                localStorage.setItem(valor.value,valor.checked)
+                formularioLS.push(valor.value);
+                break;
+            case 'Envío a domicilio':
+                localStorage.setItem(valor.value,valor.checked)
+                formularioLS.push(valor.value);
+                break;
+        
+            default:
+                console.log('no hubo seleccion');
+                localStorage.setItem('nada', 'no hubo seleccion')
+                break;
+        }
+        console.log(valor.checked, valor.value);
+        metodoEnvioElegido = valor.value;
+        console.log(metodoEnvioElegido)
+    })
 });
 
 // Seleccionar medio de pago:
@@ -141,37 +166,10 @@ checkPago.forEach(valor =>{
     })
 });
 
-//Seleccionar medio de envío:
-let checkEnvio = metodosDeEnvio.querySelectorAll('[type=radio]');
-let metodoEnvioElegido;
-checkEnvio.forEach(valor =>{
-    
-    valor.addEventListener('click',()=>{
-        switch (valor.value) {
-            case 'Retiro en local':
-                localStorage.setItem(valor.value,valor.checked)
-                formularioLS.push(valor.value);
-                break;
-            case 'Envío a domicilio':
-                localStorage.setItem(valor.value,valor.checked)
-                formularioLS.push(valor.value);
-                break;
-        
-            default:
-                console.log('no hubo seleccion');
-                localStorage.setItem('nada', 'no hubo seleccion')
-                break;
-        }
-        console.log(valor.checked, valor.value);
-        metodoEnvioElegido = valor.value;
-        console.log(metodoEnvioElegido)
-    })
-});
 
 
 
-
-///////////MOdal tarjeta///////////////////////////////
+///////////Modal tarjeta///////////////////////////////
 
 //Rellenar options select mes:
 for(let i = 1; i<13; i++){
@@ -317,13 +315,12 @@ dniTitular.addEventListener("keyup", (e) =>{
 //////////// Fin modal tarjeta////////////////////////
 
 
-
-
 dirFacturacion.addEventListener("click", () =>{
     dirFacturacion.checked ?  formularioLS.push(dirFacturacion.value="true"):  formularioLS.push(dirFacturacion.value="false");
     console.log(formularioLS);
 })
 
+//Validación rellenar todos los campos para ver pedido final
 function rellenarTodosLosCampos(){
     btnConfirmarPedido.addEventListener("click", () => {
         if( (nombre.value=="" || apellido.value=="" || telefono.value=="" || dni.value=="" || direccion.value=="" || email.value=="" || localidad.value=="null" || metodoEnvioElegido==null || metodoPagoElegido==null) 
