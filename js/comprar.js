@@ -16,8 +16,8 @@ const rapipago = document.getElementById("rapipago");
 const transferencia = document.getElementById("transferencia");  
 const envioDomicilio = document.getElementById("envioDomicilio");
 const retirar = document.getElementById("retirar");
-const btnCodigoPago = document.getElementById("btnCodigoPago");
-const btnTransferencia = document.getElementById("btnTransferencia");
+const cardCodigoPago = document.getElementById("cardCodigoPago");
+const cardTransferencia = document.getElementById("cardTransferencia");
 const btnCompletarDatosTarjeta = document.getElementById("btnCompletarDatosTarjeta");
 
 //Dom tarjeta animada:
@@ -77,8 +77,15 @@ dni.addEventListener("keyup", (e) =>{
     let valorDNI =  e.target.value;
     dni.value = valorDNI
     .replace(/\s/g, "")  //Elimina espacios en blanco
+    .replace(/\D/g, "")  //Elimina todas las letras      
+});
+
+//Input telefono validación:
+telefono.addEventListener("keyup", (e) =>{
+    let valorTel =  e.target.value;
+    telefono.value = valorTel
+    .replace(/\s/g, "")  //Elimina espacios en blanco
     .replace(/\D/g, "")  //Elimina todas las letras
-                    
 });
 
 
@@ -99,29 +106,29 @@ checkPago.forEach(valor =>{
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
                 btnCompletarDatosTarjeta.style.display= "block";
-                btnCodigoPago.style.display= "none";
-                btnTransferencia.style.display="none";
+                cardCodigoPago.style.display="none";
+                cardTransferencia.style.display="none";
                 break;
             case 'Transferencia':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
-                btnTransferencia.style.display="block";
-                btnCodigoPago.style.display= "none";
                 btnCompletarDatosTarjeta.style.display= "none";
+                cardCodigoPago.style.display="none";
+                cardTransferencia.style.display="block";
                 break;
             case 'Pago Fácil':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
-                btnCodigoPago.style.display= "block";
                 btnCompletarDatosTarjeta.style.display= "none";
-                btnTransferencia.style.display="none";
+                cardCodigoPago.style.display="block";
+                cardTransferencia.style.display="none";
                 break;
             case 'Rapipago':
                 localStorage.setItem(valor.value,valor.checked);
                 formularioLS.push(valor.value);
-                btnCodigoPago.style.display= "block";
                 btnCompletarDatosTarjeta.style.display= "none";
-                btnTransferencia.style.display="none";
+                cardCodigoPago.style.display="block";
+                cardTransferencia.style.display="none";
                 break;
             default:
                 console.log('no hubo seleccion');
@@ -160,6 +167,7 @@ checkEnvio.forEach(valor =>{
         console.log(metodoEnvioElegido)
     })
 });
+
 
 
 
@@ -212,12 +220,12 @@ inputNumero.addEventListener("keyup", (e) => {
     if(valorInput[0] ==4){
         logoMarca.innerHTML=""; //Para que no se repita el logo cada vez que se escribe 4
         const imagen = document.createElement("img");
-        imagen.src="../images/tarjeta/logo-visa.jpg";
+        imagen.src="../images/tarjeta/logo-visa.png";
         logoMarca.appendChild(imagen);
     } else if (valorInput[0] ==5){
         logoMarca.innerHTML=""; //Para que no se repita el logo cada vez que se escribe 5
         const imagen = document.createElement("img");
-        imagen.src="../images/tarjeta/logo-mastercard.jpg";
+        imagen.src="../images/tarjeta/logo-mastercard.png";
         logoMarca.appendChild(imagen);
     }
 

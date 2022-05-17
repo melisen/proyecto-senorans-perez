@@ -193,17 +193,66 @@
                         
                   </div> <!--Fin de metodosPago-->
 
-                  <!--------Botones aparecen según método de pago elegido----->
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalParaTarjeta" id="btnCompletarDatosTarjeta">
+              <div class="cardsPago">
+                  <!------ Card Rapipago y pago fácil ------------>
+                    <div id="cardCodigoPago">
+                      <div class="card text-center" style="width: 25rem;">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <h2>
+                              <img src="images/oryza-logo-chico.png" alt="logo Oryza">
+                              Código de pago
+                            </h2>
+                              </li>
+                          <li class="list-group-item transf">
+                              <div>18805 55956</div>
+                            </li>
+                            <li class="list-group-item transf">
+                                <p>Muestra este código de pago al cajero en:</p>
+                            </li>
+                            <li class="list-group-item">
+                                  <div class="imagenes">
+                                    <img src="images/rapipago.png" alt="Pago Fácil" class="imgRapipago">
+                                    <img src="images/pagofacil.png" alt="Pago Fácil" class="imgForm">
+                                  </div>
+                            </li>
+                        </ul>
+                      </div>
+                  </div>
+                <!-- Fin de card rapipago y pago fácil ------>
+                                          <!-- card Transferencia -->
+                                          <div id="cardTransferencia">
+                                            <div class="card text-center" style="width: 30rem;">
+                                              <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                  <h2>
+                                                    <img src="images/oryza-logo-chico.png" alt="logo Oryza">
+                                                    Datos para transferencia:
+                                                  </h2>
+                                                    </li>
+                                                <li class="list-group-item transf">
+                                                  <p>Número de cuenta:    4444-444444/4</p>
+                                              </li>
+                                              <li class="list-group-item transf">
+                                                <p>CBU:   4444444444444444444444444</p>
+                                            </li>
+                                                <li class="list-group-item transf">
+                                                  <p>CBU Alias:  DATOS.DEL.CBU</p>
+                                                </li>
+                                                <li class="list-group-item transf">
+                                                  <p>CUIL/CUIT:  44-44444444-4</p>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                
+                          <!-- Fin card transferencia  ------->
+              </div>
+
+                  
+                        <button type="button" class="btn btn-outline-info"  id="btnCompletarDatosTarjeta">
                           Completar datos de tarjeta
                         </button>
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalTransferencia" id="btnTransferencia">
-                          Ver datos para transferencia
-                        </button>
-                        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalRapipagoPagoFacil" id="btnCodigoPago">
-                          Ver código de pago
-                        </button>
-                        <!--Fin botones-->
                     
                         <!-- Modal tarjeta-->
                         
@@ -313,74 +362,9 @@
                         </div> <!--Fin modal fade-->
                         <!------- Fin del modal de la tarjeta ------->
 
-                        <!------ Modal rapipago y pago fácil ------------>
-                        <div class="modal" tabindex="-1" id="modalRapipagoPagoFacil" >
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title"> 
-                                  <img src="images/oryza-logo-chico.png" alt="logo Oryza">
-                                  Código de pago</h5>
-                              </div>
-                              <div class="modal-body">
-                                <div class="card text-center itemsPago" style="width: 18rem;">
-                                  <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                      <div>18805 55956</div>
-                                    </li>
-                                    <li class="list-group-item">
-                                      <p>Muestra este código de pago al cajero en:</p>
-                                  </li>
-                                    <li class="list-group-item">
-                                      <img src="images/rapipago.png" alt="Pago Fácil" class="imgRapipago">
-                                          <img src="images/pagofacil.png" alt="Pago Fácil" class="imgForm">
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Imprimir</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Fin del modal rapipago y pago fácil ------>
 
-                        <!-- Modal Transferencia -->
-                  <div class="modal fade" id="modalTransferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">
-                            <img src="images/oryza-logo-chico.png" alt="logo Oryza">
-                            Datos para transferencia</h5>
-                        </div>
-                        <div class="modal-body">
-                          <div class="card text-center itemsPago" style="width: 18rem;">
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">
-                                <p>Número de cuenta:4444-444444/4</p>
-                            </li>
-                            <li class="list-group-item">
-                              <p>CBU:4444444444444444444444444</p>
-                          </li>
-                              <li class="list-group-item">
-                                <p>CBU Alias: DATOS.DEL.CBU</p>
-                              </li>
-                              <li class="list-group-item">
-                                <p>CUIL/CUIT: 44-44444444-4</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-        <!-- Fin del modal transferencia  ------->
+
+
 
         <!-- Dirección de facturación-->
                     <div class="itemsPago ">
@@ -409,7 +393,6 @@
         Ver pedido
       </button>
     </div>
-
 
 <!-- Modal  Resumen del pedido-->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

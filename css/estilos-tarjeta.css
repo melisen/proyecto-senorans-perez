@@ -14,7 +14,7 @@
 }
 .tarjeta{
     width: 100%;
-    max-width: 550px;
+    max-width: 460px;
     position: relative;
     color: white;
     transition: .3s ease all;
@@ -29,9 +29,9 @@
 }
 
 .tarjeta > div{
-    padding: 30px;
+    padding: 15px;
     border-radius: 15px;
-    min-height: 315px;
+    max-height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,6 +146,13 @@ text-transform: capitalize;
 }
 
 /***** Formulario *******/
+#formulario-tarjeta{
+    width:80%;
+    margin-top:2rem;
+}
+.itemFormTar{
+    margin:1rem 0;
+}
 .flexbox{
     display:flex;
     justify-content: space-between;
